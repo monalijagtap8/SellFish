@@ -13,28 +13,33 @@
         android:layout_gravity="center"
         android:hint="Enter name"
         android:id="@+id/edtName"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:inputType="text"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/edtPhone"
         android:hint="Enter phone"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:inputType="phone"
+        android:maxLength="10"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/edtEmail"
         android:hint="Enter Email"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:inputType="textEmailAddress"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/edtPassword"
         android:hint="Enter Password"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:inputType="textPassword"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
