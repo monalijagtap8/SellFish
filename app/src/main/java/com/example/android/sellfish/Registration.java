@@ -22,6 +22,7 @@ public class Registration extends AppCompatActivity {
     int flag=0;
     String name,email,phone,password;
     VolleyRequest volleyRequest;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class Registration extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.btnRegister})
+    @OnClick({R.id.btnRegister,R.id.edtName,R.id.edtEmail,R.id.edtPhone,R.id.edtPassword})
     public void onClick(final View view) {
 
         switch (view.getId()) {
@@ -41,19 +42,26 @@ public class Registration extends AppCompatActivity {
                       name=edtName.getText().toString();
                         if(name.length()==0)
                         {
+                            edtName.setError("Please enter name");
                             flag=1;
                         }
                         email=edtEmail.getText().toString();
-                        if(email.length()==0)
+                    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                        if(emailPattern.matches(email)||email.length()==0)
                         {
+                            edtEmail.setError("Please enter email");
                             flag=1;
                         }
-                        if(phone.length()==0)
+                        phone=edtPhone.getText().toString();
+                        if(phone.length()==0||phone.length()<10)
                         {
+                            edtPhone.setError("Please enter phone");
                             flag=1;
                         }
+                        password=edtPassword.getText().toString();
                         if (password.length()==0)
                         {
+                            edtPassword.setError("Please enter password");
                             flag=1;
                         }
                         flag=0;
@@ -68,12 +76,19 @@ public class Registration extends AppCompatActivity {
 
        volleyRequest=VolleyRequest.getObject();
         volleyRequest.setContext(getApplicationContext());
-        Log.d("checkData: ", "http://sansmealbox.com/admin/routes/server/app/checkUserInfo.rfa.php?auth_id");
-       volleyRequest.setUrl("http://sansmealbox.com/admin/routes/server/app/checkUserInfo.rfa.php?auth_i");
-           volleyRequest.getResponse(new ServerCallback() {
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/userData.rfa.php?name="+name+"&email="+email+"&phone="+phone+"&password="+password);
+       volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/userData.rfa.php?name="+name+"&email="+email+"&phone="+phone+"&password="+password);
+           volleyRequest.getResponse(new ServerCallback()
+           {
                 @Override
-                public void onSuccess(String response) {
-
+                public void onSuccess(String response)
+                {
+                        Log.d("Response",response);
+                        if(response.contains("OK"))
+                        {
+                            intent=new Intent(Registration.this,LoginActivity.class);
+                            startActivity(intent);
+                        }
                 }
             });
         }
