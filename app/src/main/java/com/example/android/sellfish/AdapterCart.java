@@ -1,8 +1,6 @@
 package com.example.android.sellfish;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,19 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+
 import butterknife.ButterKnife;
 
 /**
@@ -39,7 +34,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     private Context context;
     private LayoutInflater inflater;
 
-    // create constructor to innitilize context and data sent frm MainActivity
     public AdapterCart(Context context, List<DataCart> data) {
         this.context = context;
         inflater = LayoutInflater.from(context);
