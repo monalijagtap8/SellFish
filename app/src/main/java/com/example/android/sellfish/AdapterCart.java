@@ -1,6 +1,8 @@
 package com.example.android.sellfish;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
@@ -31,6 +34,10 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     MyHolder myHolder;
     VolleyRequest urlRequest;
     ArrayList<String> list;
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+    String user_id;
+    VolleyRequest volleyRequest;
     private Context context;
     private LayoutInflater inflater;
 
@@ -57,6 +64,8 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         View view = inflater.inflate(R.layout.container_adapter, parent, false);
         MyHolder holder = new MyHolder(view);
         ButterKnife.inject(this, view);
+        sp = context.getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
+        editor = sp.edit();
         return holder;
     }
 
@@ -88,6 +97,28 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                 return false;
             }
         }).error(null).into(myHolder.imageView);
+
+        myHolder.btn_addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                user_id = sp.getString("USER_ID", "");
+                Toast.makeText(context, "idddddd..." + user_id, Toast.LENGTH_SHORT).show();
+                volleyRequest = VolleyRequest.getObject();
+                volleyRequest.setContext(context);
+                Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php");
+                volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php");
+                volleyRequest.getResponse(new ServerCallback() {
+                    @Override
+                    public void onSuccess(String response) {
+
+                        Log.d("Responsecart", response);
+
+
+                    }
+                });
+            }
+        });
     }
 
 

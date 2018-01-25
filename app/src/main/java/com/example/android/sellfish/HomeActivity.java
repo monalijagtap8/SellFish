@@ -98,6 +98,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             item_data.type = json_data.getString("type");
                             item_data.desc = json_data.getString("description");
                             item_data.price = json_data.getInt("price");
+                            item_data.id = json_data.getInt("id");
                             item_data.image=json_data.getString("image_path");
                             data.add(item_data);
                             Log.d(i+"", "loop");
