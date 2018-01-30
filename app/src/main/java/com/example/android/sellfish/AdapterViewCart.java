@@ -2,7 +2,6 @@ package com.example.android.sellfish;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
@@ -29,9 +27,9 @@ import butterknife.ButterKnife;
  * Created by user on 24/1/18.
  */
 
-public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
+public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
-    List<DataCart> data = Collections.emptyList();
+    List<DataViewCart> data = Collections.emptyList();
     MyHolder myHolder;
     VolleyRequest urlRequest;
     ArrayList<String> list;
@@ -42,7 +40,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     private Context context;
     private LayoutInflater inflater;
 
-    public AdapterCart(Context context, List<DataCart> data) {
+    public AdapterViewCart(Context context, List<DataViewCart> data) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.data = data;
@@ -62,7 +60,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.container_adapter, parent, false);
+        View view = inflater.inflate(R.layout.container_viewcart, parent, false);
         MyHolder holder = new MyHolder(view);
         ButterKnife.inject(this, view);
         sp = context.getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
@@ -75,72 +73,71 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         final MyHolder myHolder = (MyHolder) holder;
         final int pos = position;
-        final DataCart item_data = data.get(position);
+        final DataViewCart item_data = data.get(position);
         Log.d("position", position + "");
 
-            myHolder.txt_name.setText(item_data.name);
-            myHolder.btn_description.setText("Description");
-            myHolder.btn_addToCart.setText("add to cart");
+        myHolder.txt_name.setText(item_data.name);
+        myHolder.txt_type.setText(item_data.type);
+        myHolder.txt_quantity.setText(item_data.quantity + "");
+        myHolder.txt_price.setText(item_data.price + "");
 
-        Glide.with(context).load("http://192.168.0.110:8001/routes/server/"+item_data.image).asBitmap().override(600, 600)
+        Glide.with(context).load("http://192.168.0.110:8001/routes/server/" + item_data.image).asBitmap().override(600, 600)
                 .placeholder(null).listener(new RequestListener<String, Bitmap>() {
             @Override
             public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
-                Log.d( "image","http://192.168.0.110:8001/routes/server/"+item_data.image);
+                Log.d("image", "http://192.168.0.110:8001/routes/server/" + item_data.image);
                 myHolder.imageView.setVisibility(View.VISIBLE);
                 return false;
             }
 
             @Override
             public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
-               // myHolder.imageView.setVisibility(View.GONE);
-                Log.d( "image","http://192.168.0.110:8001/routes/server/"+item_data.image);
+                // myHolder.imageView.setVisibility(View.GONE);
+                Log.d("image", "http://192.168.0.110:8001/routes/server/" + item_data.image);
                 return false;
             }
         }).error(null).into(myHolder.imageView);
 
-        myHolder.btn_addToCart.setOnClickListener(new View.OnClickListener() {
+        myHolder.btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                user_id = sp.getString("USER_ID", "");
-                Toast.makeText(context, "idddddd..." + user_id, Toast.LENGTH_SHORT).show();
+                int quantity = Integer.parseInt(myHolder.txt_quantity.getText() + "");
+                myHolder.txt_quantity.setText(++quantity + "");
+            }
+        });
+
+        myHolder.btn_remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int quantity = Integer.parseInt(myHolder.txt_quantity.getText() + "");
+                if (quantity > 1)
+                    myHolder.txt_quantity.setText(--quantity + "");
+            }
+        });
+
+        myHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 volleyRequest = VolleyRequest.getObject();
                 volleyRequest.setContext(context);
-                Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.id);
-                volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.id);
+                Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/removeFromCart.rfa.php?user_id=" + item_data.user_id + "&item_id=" + item_data.item_id);
+                volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/removeFromCart.rfa.php?user_id=" + item_data.user_id + "&item_id=" + item_data.item_id);
                 volleyRequest.getResponse(new ServerCallback() {
                     @Override
                     public void onSuccess(String response) {
 
-                        Log.d("Responsecart", response);
+                        Log.d("ResponseDelete", response);
 
-
+                        Activity a = (Activity) context;
+                        a.recreate();
                     }
                 });
-            }
-        });
-        myHolder.btn_description.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(context, Description.class);
-                intent.putExtra("NAME", item_data.name);
-                intent.putExtra("IMAGE", item_data.image);
-                intent.putExtra("ITEM_ID", item_data.id + "");
-                intent.putExtra("USER_ID", user_id + "");
-                intent.putExtra("PRICE", item_data.price + "");
-                intent.putExtra("AVAILABILITY", "available");
-                intent.putExtra("DESCRIPTION", item_data.desc);
-                view.getContext().startActivity(intent);
 
             }
         });
     }
-
-
-
-
 
     @Override
     public int getItemCount() {
@@ -148,19 +145,22 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     }
 
 
-
     class MyHolder extends RecyclerView.ViewHolder {
-        TextView txt_name;
-        Button btn_addToCart,btn_description;
+        TextView txt_name, txt_type, txt_quantity, txt_price;
+        Button btn_add, btn_remove, btn_delete;
         ImageView imageView;
 
         public MyHolder(View itemView) {
             super(itemView);
 
+            btn_add = itemView.findViewById(R.id.btn_add);
+            btn_remove = itemView.findViewById(R.id.btn_remove);
+            btn_delete = itemView.findViewById(R.id.btn_delete);
             txt_name = itemView.findViewById(R.id.txt_name);
-            btn_addToCart = itemView.findViewById(R.id.btn_addToCart);
-            btn_description= itemView.findViewById(R.id.btn_description);
-            imageView= itemView.findViewById(R.id.image_view);
+            txt_type = itemView.findViewById(R.id.txt_type);
+            txt_price = itemView.findViewById(R.id.txt_price);
+            txt_quantity = itemView.findViewById(R.id.txt_quantity);
+            imageView = itemView.findViewById(R.id.img_viewCart);
 
         }
     }

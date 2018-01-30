@@ -1,5 +1,8 @@
 package com.example.android.sellfish;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
 
@@ -32,8 +37,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @InjectView(R.id.search_view)
     SearchView searchView;
-    /*@InjectView(R.id.btn_showMyCart)
-    Button btn_showMyCart;*/
+    @InjectView(R.id.img_viewCart)
+    ImageView viewCart;
+    @InjectView(R.id.cartCount)
+    TextView cartCount;
     @InjectView(R.id.slider)
     SliderLayout sliderShow;
     AdapterCart adapter;
@@ -43,6 +50,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     VolleyRequest volleyRequest;
     JSONArray jArray;
     JSONObject json_data;
+    String user_id;
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +60,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ButterKnife.inject(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
+        editor = sp.edit();
+        user_id = sp.getString("USER_ID", "");
         /*for (int i = 1; i <= 4; i++) {
             DefaultSliderView textSliderView = new DefaultSliderView(this);
             textSliderView.image("http://yashodeepacademy.co.in/slider/" + i + ".jpg");
@@ -68,6 +81,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 */
+        getItemCount();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -120,6 +134,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+        viewCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, ViewCart.class);
+                finish();
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -132,6 +154,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    public void getItemCount() {
+        volleyRequest = VolleyRequest.getObject();
+        volleyRequest.setContext(getApplicationContext());
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=" + user_id);
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=" + user_id);
+        volleyRequest.getResponse(new ServerCallback() {
+            @Override
+            public void onSuccess(String response) {
+                Log.d(response, "count");
+                int count = Integer.parseInt(response);
+                Log.d(response, "rcount");
+                cartCount.setText(response);
+                if (count > 9) {
+                    cartCount.setPadding(2, 0, 0, 0);
+                } else {
+                    cartCount.setPadding(6, 0, 0, 0);
+                }
+
+
+            }
+        });
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
