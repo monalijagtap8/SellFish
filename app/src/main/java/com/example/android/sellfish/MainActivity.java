@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btnSignUp:
                 intent=new Intent(MainActivity.this,Registration.class);
+                intent.putExtra("PARENT_ACTIVITY", "MainActivity");
                 finish();
                 startActivity(intent);
                 break;

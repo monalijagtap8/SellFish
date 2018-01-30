@@ -8,44 +8,46 @@
     android:orientation="vertical"
     tools:context="com.example.android.sellfish.Registration">
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="Enter name"
-        android:id="@+id/edtName"
-        android:layout_marginTop="10dp"
-        android:inputType="text"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/edtPhone"
-        android:hint="Enter phone"
-        android:layout_marginTop="5dp"
-        android:inputType="phone"
-        android:maxLength="10"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:id="@+id/edtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
         android:hint="Enter Email"
-        android:layout_marginTop="5dp"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress" />
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:id="@+id/edtPassword"
-        android:hint="Enter Password"
-        android:layout_marginTop="5dp"
-        android:inputType="textPassword"/>
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnRegister"
-        android:text="Register"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="5dp"
+        android:hint="Enter Password"
+        android:inputType="textPassword" />
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:hint="Enter name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:hint="Enter phone"
+        android:inputType="phone"
+        android:maxLength="10" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Register" />
 
 </LinearLayout>

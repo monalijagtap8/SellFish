@@ -1,6 +1,5 @@
 package com.example.android.sellfish;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 

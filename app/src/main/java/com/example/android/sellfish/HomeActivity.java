@@ -1,5 +1,6 @@
 package com.example.android.sellfish;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,7 +11,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -43,6 +43,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     VolleyRequest volleyRequest;
     JSONArray jArray;
     JSONObject json_data;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +77,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        fetchItems();
+
+    }
+
+    public void fetchItems() {
         volleyRequest=VolleyRequest.getObject();
         volleyRequest.setContext(getApplicationContext());
         Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php");
@@ -112,9 +118,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
                     } catch (JSONException e) {
-
                         e.printStackTrace();
-
                     }
                 }
 
@@ -132,35 +136,41 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    /*  @Override
+      public boolean onCreateOptionsMenu(Menu menu) {
+          // Inflate the menu; this adds items to the action bar if it is present.
+          getMenuInflater().inflate(R.menu.home, menu);
+          return true;
+      }
 
-        int id = item.getItemId();
+      @Override
+      public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (id == R.id.action_settings) {
-            return true;
-        }
+          int id = item.getItemId();
 
-        return super.onOptionsItemSelected(item);
-    }
+          if (id == R.id.action_settings) {
+              return true;
+          }
 
+          return super.onOptionsItemSelected(item);
+      }
+  */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_user_account) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+            intent = new Intent(HomeActivity.this, UserProfile.class);
+            finish();
+            startActivity(intent);
+        } else if (id == R.id.nav_home) {
+            intent = new Intent(HomeActivity.this, HomeActivity.class);
+            finish();
+            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -170,7 +180,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_send) {
 
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
