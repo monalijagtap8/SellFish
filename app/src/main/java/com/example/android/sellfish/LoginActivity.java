@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String response) {
                 Log.d("Response", response);
-                if (response.contains("OK")) {
+                if (response.contains("OK") || response.contains("UPDATED")) {
                     intent = new Intent(LoginActivity.this, LoginActivity.class);
                     finish();
                     startActivity(intent);

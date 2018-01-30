@@ -72,6 +72,8 @@ public class Registration extends AppCompatActivity {
                         edtPassword.setError("Please enter password");
                         flag = 1;
                     }
+                } else {
+                    password = "NULL";
                 }
                 //flag=0;
                         if(flag==0)
@@ -93,14 +95,19 @@ public class Registration extends AppCompatActivity {
                 public void onSuccess(String response)
                 {
                         Log.d("Response",response);
-                        if(response.contains("OK")) {
-                            intent=new Intent(Registration.this,LoginActivity.class);
-                            finish();
-                            startActivity(intent);
-                            Toast.makeText(Registration.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(Registration.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                        }
+                    if (response.contains("OK")) {
+                        intent=new Intent(Registration.this,LoginActivity.class);
+                        finish();
+                        startActivity(intent);
+                        Toast.makeText(Registration.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                    } else if (response.contains("UPDATED")) {
+                        intent = new Intent(Registration.this, UserProfile.class);
+                        finish();
+                        startActivity(intent);
+                        Toast.makeText(Registration.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Registration.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }

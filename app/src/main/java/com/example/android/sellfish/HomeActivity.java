@@ -13,7 +13,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -53,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     String user_id;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,35 +177,41 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
+    /* @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+         // Inflate the menu; this adds items to the action bar if it is present.
+         getMenuInflater().inflate(R.menu.home, menu);
+         return true;
+     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+     @Override
+     public boolean onOptionsItemSelected(MenuItem item) {
 
-        int id = item.getItemId();
+         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        }
+         if (id == R.id.action_settings) {
+             return true;
+         }
 
-        return super.onOptionsItemSelected(item);
-    }
-
+         return super.onOptionsItemSelected(item);
+     }
+ */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_user_account) {
 
+            intent = new Intent(HomeActivity.this, UserProfile.class);
+            finish();
+            startActivity(intent);
+            // Handle the camera action
+        } else if (id == R.id.nav_home) {
+            intent = new Intent(HomeActivity.this, HomeActivity.class);
+            finish();
+            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
