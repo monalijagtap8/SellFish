@@ -23,8 +23,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import butterknife.ButterKnife;
-
 /**
  * Created by user on 24/1/18.
  */
@@ -50,7 +48,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     @Override
     public void onClick(View v) {
-
     }
 
     @Override
@@ -64,7 +61,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.container_adapter, parent, false);
         MyHolder holder = new MyHolder(view);
-        ButterKnife.inject(this, view);
+
         sp = context.getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         editor = sp.edit();
         return holder;
@@ -115,7 +112,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
                         Log.d("Responsecart", response);
 
-
                     }
                 });
             }
@@ -139,15 +135,10 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     }
 
 
-
-
-
     @Override
     public int getItemCount() {
         return data.size();
     }
-
-
 
     class MyHolder extends RecyclerView.ViewHolder {
         TextView txt_name;
@@ -156,12 +147,10 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
         public MyHolder(View itemView) {
             super(itemView);
-
             txt_name = itemView.findViewById(R.id.txt_name);
             btn_addToCart = itemView.findViewById(R.id.btn_addToCart);
             btn_description= itemView.findViewById(R.id.btn_description);
             imageView= itemView.findViewById(R.id.image_view);
-
         }
     }
 }

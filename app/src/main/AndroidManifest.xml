@@ -29,8 +29,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewCart" />
-        <activity android:name=".Description"></activity>
+        <activity android:name=".UserProfile"></activity>
     </application>
 
 </manifest>
