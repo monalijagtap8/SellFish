@@ -1,12 +1,18 @@
 package com.example.android.sellfish;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,13 +37,18 @@ public class Description extends AppCompatActivity {
     ImageView imgView;
     @InjectView(R.id.btn_addToCart)
     Button btnAddToCart;
+    @InjectView(R.id.btn_buyNow)
+    Button btnBuyNow;
     VolleyRequest volleyRequest;
-
+    TextView tv;
+    EditText et;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
         ButterKnife.inject(this);
+
+
         name = getIntent().getStringExtra("NAME");
         image = getIntent().getStringExtra("IMAGE");
         price = getIntent().getStringExtra("PRICE");
@@ -89,6 +100,47 @@ public class Description extends AppCompatActivity {
                 });
             }
         });
+        btnBuyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                LayoutInflater li = LayoutInflater.from(Description.this);
+                final View enquireDialog = li.inflate(R.layout.dialouge_payment, null);
+                final TextView txtName = enquireDialog.findViewById(R.id.txtName);
+                final RadioGroup radiogrp = enquireDialog.findViewById(R.id.radioBtnGroup);
+                final RadioButton radiobtnCashOnDelivery = enquireDialog.findViewById(R.id.radioBtnCashOnDelivery);
+                final RadioButton radiobtnPayUMoney = enquireDialog.findViewById(R.id.radioBtnPayUMoney);
+
+                final Button btnContinue = enquireDialog.findViewById(R.id.buttonCountinue);
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(Description.this);
+                //Adding our dialog box to the view of alert dialog
+                alert.setView(enquireDialog);
+
+                //Creating an alert dialog
+                final AlertDialog alertDialog = alert.create();
+                radiobtnCashOnDelivery.setText("Cash On Delivery");
+                radiobtnPayUMoney.setText("PayUMoney");
+
+                btnContinue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String number;
+                        if (radiobtnCashOnDelivery.isChecked()) {
+                            startActivity(new Intent(Description.this, CashOnDelivery.class));
+                            alertDialog.dismiss();
+                            finish();
+
+                        } else
+                            Toast.makeText(Description.this, "PayUMoney will be add soon", Toast.LENGTH_LONG).show();
+                    }
+                });
+                alertDialog.show();
+            }
+        });
+
 
     }
+
+
 }

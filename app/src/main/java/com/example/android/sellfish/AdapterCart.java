@@ -78,8 +78,8 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             myHolder.txt_name.setText(item_data.name);
             myHolder.btn_description.setText("Description");
             myHolder.btn_addToCart.setText("add to cart");
-
-        Glide.with(context).load("http://192.168.0.110:8001/routes/server/"+item_data.image).asBitmap().override(600, 600)
+        user_id = sp.getString("USER_ID", "");
+        Glide.with(context).load("http://192.168.0.110:8001/routes/server/" + item_data.image).asBitmap().override(600, 600)
                 .placeholder(null).listener(new RequestListener<String, Bitmap>() {
             @Override
             public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
@@ -100,7 +100,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             @Override
             public void onClick(View view) {
 
-                user_id = sp.getString("USER_ID", "");
+
                 Toast.makeText(context, "idddddd..." + user_id, Toast.LENGTH_SHORT).show();
                 volleyRequest = VolleyRequest.getObject();
                 volleyRequest.setContext(context);
@@ -125,6 +125,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                 intent.putExtra("IMAGE", item_data.image);
                 intent.putExtra("ITEM_ID", item_data.id + "");
                 intent.putExtra("USER_ID", user_id + "");
+                Log.d(user_id, "intent");
                 intent.putExtra("PRICE", item_data.price + "");
                 intent.putExtra("AVAILABILITY", "available");
                 intent.putExtra("DESCRIPTION", item_data.desc);
