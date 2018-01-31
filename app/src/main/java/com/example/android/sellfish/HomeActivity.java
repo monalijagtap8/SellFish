@@ -203,7 +203,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_user_account) {
-
             intent = new Intent(HomeActivity.this, UserProfile.class);
             finish();
             startActivity(intent);

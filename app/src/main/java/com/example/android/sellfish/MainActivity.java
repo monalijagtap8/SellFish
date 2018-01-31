@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 startActivity(intent);
                 break;
-
         }
 
     }

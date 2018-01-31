@@ -125,9 +125,7 @@ public class UserProfile extends AppCompatActivity {
                     password = jsonObject.getString("password");
 
                     Log.d("Name", name);
-                   /* editor=sp.edit();
-                    editor.putString("PASSWORD",password);
-                    editor.commit();*/
+
                     txtName.setText(name);
                     txtPhone.setText(phone);
                     txtEmail.setText(email);
