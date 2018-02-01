@@ -13,9 +13,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.sdsmdg.tastytoast.TastyToast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,6 +48,7 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
     SharedPreferences.Editor editor;
     String user_id;
     VolleyRequest volleyRequest;
+    JSONObject orderData;
     private Context context;
     private LayoutInflater inflater;
 
@@ -104,6 +116,8 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
                 int quantity = Integer.parseInt(myHolder.txt_quantity.getText() + "");
                 myHolder.txt_quantity.setText(++quantity + "");
+                updateQuantity(item_data.user_id, item_data.item_id, "add");
+                TastyToast.makeText(context, "Another Tiffin box added..!", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
             }
         });
 
@@ -114,6 +128,10 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 int quantity = Integer.parseInt(myHolder.txt_quantity.getText() + "");
                 if (quantity > 1)
                     myHolder.txt_quantity.setText(--quantity + "");
+                updateQuantity(item_data.user_id, item_data.item_id, "delete");
+
+                TastyToast.makeText(context, " Tiffin box Removed..", TastyToast.LENGTH_SHORT, TastyToast.CONFUSING);
+
             }
         });
 
@@ -137,6 +155,39 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             }
         });
+    }
+
+    public void updateQuantity(String user_id, String item_id, String action) {
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        Log.d("URLorder", "http://sansmealbox.com/admin/routes/server/app/addToCart.rfa.php");
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(
+                Request.Method.POST, "http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_id + "&action=" + action, orderData,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Log.d("ResponseOrderQuantity", response.getString("response"));
+                            Activity a = (Activity) context;
+                            a.recreate();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Toast.makeText(context, "OK", Toast.LENGTH_LONG).show();
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                VolleyLog.d("Error: ", error.getMessage());
+
+
+            }
+        });
+        requestQueue.add(jsonObjReq);
     }
 
     @Override

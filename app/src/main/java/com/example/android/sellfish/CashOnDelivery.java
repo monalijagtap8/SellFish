@@ -14,12 +14,12 @@ public class CashOnDelivery extends AppCompatActivity {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     String name, phone, email;
-    @InjectView(R.id.edtName)
+    @InjectView(R.id.edt_name)
     EditText edtName;
     @InjectView(R.id.edt_phone)
     EditText edtPhone;
-    @InjectView(R.id.edt_email)
-    EditText edtMail;
+    @InjectView(R.id.edt_address)
+    EditText edtAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,6 @@ public class CashOnDelivery extends AppCompatActivity {
         email = sp.getString("EMAIL", "");
         edtName.setText(name);
         edtPhone.setText(phone);
-        edtMail.setText(email);
+
     }
 }
