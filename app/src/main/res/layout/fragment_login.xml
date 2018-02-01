@@ -13,27 +13,43 @@
 
         <EditText
             android:id="@+id/edtName1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="Email Id" />
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/edt_shape"
+            android:hint="Email Id"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/edtPassword1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edt_shape"
             android:hint="Password "
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Login" />
+            android:layout_marginLeft="120dp"
+            android:layout_marginRight="120dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edt_shape"
+            android:padding="10dp"
+            android:text="Login"
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/txtForgotPassword"
@@ -41,7 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Forgot your password?"
-            android:textSize="20dp" />
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </FrameLayout>
