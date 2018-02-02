@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -26,7 +25,7 @@ public class UserProfile extends AppCompatActivity {
     SharedPreferences.Editor editor;
     Intent intent;
     VolleyRequest urlRequest;
-    String id, name, email, phone, password;
+    String id, name, email, phone, password, address;
     // AlertDialog alertDialog;
     @InjectView(R.id.txtName)
     TextView txtName;
@@ -34,8 +33,10 @@ public class UserProfile extends AppCompatActivity {
     TextView txtPhone;
     @InjectView(R.id.txtEmail)
     TextView txtEmail;
-    @InjectView(R.id.imgEdit)
-    ImageView imgEdit;
+    @InjectView(R.id.txtAddress)
+    TextView txtAddress;
+    @InjectView(R.id.txtEditProfile)
+    TextView imgEdit;
     boolean logged_in;
     AlertDialog.Builder alert;
     CardView cardAddress, cardPhone, cardEmail;
@@ -49,11 +50,9 @@ public class UserProfile extends AppCompatActivity {
         logged_in = sp.getBoolean("LOGGED_IN", false);
         Log.d("Login@@@", logged_in + "");
         editor = sp.edit();
-        cardPhone = findViewById(R.id.cardPhone);
-        // cardAddress = findViewById(R.id.cardAddress);
-        cardEmail = findViewById(R.id.cardEmail);
+
         if (!sp.getBoolean("LOGGED_IN", false)) {
-            intent = new Intent(UserProfile.this, LoginActivity.class);
+            intent = new Intent(UserProfile.this, TabActivity.class);
             intent.putExtra("PARENT_ACTIVITY_NAME", "UserProfile");
             finish();
             startActivity(intent);
@@ -63,7 +62,7 @@ public class UserProfile extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.txtLogin, R.id.imgEdit})
+    @OnClick({R.id.txtLogin, R.id.txtEditProfile})
     public void onClick(View view) {
 
         switch (view.getId()) {
@@ -96,11 +95,11 @@ public class UserProfile extends AppCompatActivity {
                 ad1.show();
 
                 break;
-            case R.id.imgEdit:
+            case R.id.txtEditProfile:
                 intent = new Intent(UserProfile.this, Registration.class);
                 intent.putExtra("PARENT_ACTIVITY", "UserProfile");
-                finish();
                 startActivity(intent);
+                finish();
                 break;
         }
     }
@@ -123,17 +122,27 @@ public class UserProfile extends AppCompatActivity {
                     email = jsonObject.getString("email");
                     phone = jsonObject.getString("phone");
                     password = jsonObject.getString("password");
+                    address = jsonObject.getString("address");
 
                     Log.d("Name", name);
 
                     txtName.setText(name);
                     txtPhone.setText(phone);
                     txtEmail.setText(email);
+                    txtAddress.setText(address);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        intent = new Intent(UserProfile.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
@@ -100,8 +100,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             @Override
             public void onClick(View view) {
 
-
-                Toast.makeText(context, "idddddd..." + user_id, Toast.LENGTH_SHORT).show();
                 volleyRequest = VolleyRequest.getObject();
                 volleyRequest.setContext(context);
                 Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.id);
@@ -111,7 +109,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                     public void onSuccess(String response) {
 
                         Log.d("Responsecart", response);
-
+                        refresh();
                     }
                 });
             }
@@ -135,6 +133,12 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         });
     }
 
+    public void refresh() {
+        Intent i = ((Activity) context).getIntent();
+        ((Activity) context).finish();
+        context.startActivity(i);
+    }
+
 
     @Override
     public int getItemCount() {
@@ -145,6 +149,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         TextView txt_name;
         Button btn_addToCart,btn_description;
         ImageView imageView;
+        RelativeLayout relativeLayout;
 
         public MyHolder(View itemView) {
             super(itemView);
@@ -152,6 +157,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             btn_addToCart = itemView.findViewById(R.id.btn_addToCart);
             btn_description= itemView.findViewById(R.id.btn_description);
             imageView= itemView.findViewById(R.id.image_view);
+            relativeLayout = itemView.findViewById(R.id.relativeAdapter);
         }
     }
 }
