@@ -16,7 +16,6 @@
         app:cardCornerRadius="2dp"
         app:cardElevation="8dp">
 
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/cartlist"
             android:layout_width="match_parent"

@@ -78,7 +78,6 @@ public class ViewCart extends AppCompatActivity {
 
                     }
                 }
-
             }
         });
     }

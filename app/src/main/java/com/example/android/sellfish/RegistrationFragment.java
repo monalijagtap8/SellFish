@@ -34,32 +34,36 @@ public class RegistrationFragment extends Fragment {
     EditText edtEmail;
     @InjectView(R.id.edtPassword)
     EditText edtPassword;
+    @InjectView(R.id.edtAddress)
+    EditText edtAddress;
     @InjectView(R.id.btnRegister)
     Button btnRegister;
     int flag = 0;
-    String name, email, phone, password, pwd;
+    String name, email, phone, password, address;
     VolleyRequest volleyRequest;
     String parent_activity;
     Intent intent;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    Bundle bundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_registration, container, false);
-        ButterKnife.inject(view);
+        ButterKnife.inject(this, view);
         sp = getActivity().getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
-        parent_activity = getActivity().getIntent().getStringExtra("PARENT_ACTIVITY");
-       /* if (parent_activity.equals("UserProfile")) {
+        bundle = this.getArguments();
+        parent_activity = bundle.getString("PARENT_ACTIVITY");
+        if (parent_activity.equals("UserProfile")) {
             edtPassword.setVisibility(View.GONE);
+            btnRegister.setText("update");
         }
-*/
         return view;
     }
 
-    @OnClick({R.id.btnRegister, R.id.edtName, R.id.edtEmail, R.id.edtPhone, R.id.edtPassword})
+    @OnClick({R.id.btnRegister, R.id.edtName, R.id.edtEmail, R.id.edtPhone, R.id.edtPassword, R.id.edtAddress})
     public void onClick(final View view) {
 
         switch (view.getId()) {
@@ -79,6 +83,11 @@ public class RegistrationFragment extends Fragment {
                 phone = edtPhone.getText().toString().trim();
                 if (phone.length() == 0 || phone.length() < 10) {
                     edtPhone.setError("Please enter phone");
+                    flag = 1;
+                }
+                address = edtAddress.getText().toString().trim();
+                if (address.length() == 0) {
+                    edtAddress.setError("Please enter address");
                     flag = 1;
                 }
                 password = edtPassword.getText().toString().trim();
@@ -101,8 +110,8 @@ public class RegistrationFragment extends Fragment {
     public void register() {
         volleyRequest = VolleyRequest.getObject();
         volleyRequest.setContext(getActivity());
-        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/userData.rfa.php?name=" + name + "&email=" + email + "&phone=" + phone + "&password=" + password);
-        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/userData.rfa.php?name=" + name + "&email=" + email + "&phone=" + phone + "&password=" + password);
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/userData.rfa.php?name=" + name + "&email=" + email + "&phone=" + phone + "&password=" + password + "&address=" + address);
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/userData.rfa.php?name=" + name + "&email=" + email + "&phone=" + phone + "&password=" + password + "&address=" + address);
         volleyRequest.getResponse(new ServerCallback() {
             @Override
             public void onSuccess(String response) {
@@ -126,5 +135,4 @@ public class RegistrationFragment extends Fragment {
             }
         });
     }
-
 }

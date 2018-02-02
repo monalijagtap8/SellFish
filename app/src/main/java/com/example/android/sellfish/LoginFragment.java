@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment\
         view = inflater.inflate(R.layout.fragment_login, container, false);
-        ButterKnife.inject(getContext(), view);
+        ButterKnife.inject(this, view);
 
         try {
             File f = new File("/data/data/com.xoxytech.ostello/shared_prefs/YourSharedPreference.xml");
@@ -196,7 +196,7 @@ public class LoginFragment extends Fragment {
                         email = jsonObject.getString("email");
                         phone = jsonObject.getString("phone");
                         user_id = jsonObject.getString("id");
-
+                        sp = getActivity().getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
                         editor = sp.edit();
                         editor.putBoolean("LOGGED_IN", true);
                         editor.putString("NAME", name);

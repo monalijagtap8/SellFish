@@ -19,6 +19,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
 
@@ -51,6 +52,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     JSONObject json_data;
     String user_id;
     SharedPreferences sp;
+    long back_pressed = 0;
+    Toast toast;
     SharedPreferences.Editor editor;
     Intent intent;
     @Override
@@ -150,7 +153,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (back_pressed + 2000 > System.currentTimeMillis()) {
+                // need to cancel the toast here
+                toast.cancel();
+                // code for exit
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
+            } else {
+                // ask user to press back button one more time to close app
+                toast = Toast.makeText(getBaseContext(), "Press once again to exit!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+            back_pressed = System.currentTimeMillis();
         }
     }
 
@@ -206,7 +223,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(HomeActivity.this, UserProfile.class);
             finish();
             startActivity(intent);
-            // Handle the camera action
+
         } else if (id == R.id.nav_home) {
             intent = new Intent(HomeActivity.this, HomeActivity.class);
             finish();

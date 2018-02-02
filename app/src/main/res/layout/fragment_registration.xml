@@ -1,13 +1,14 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_ll_shape"
+    android:background="@drawable/reg_bg_shape"
     tools:context="com.example.android.sellfish.RegistrationFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
         <EditText
@@ -15,71 +16,108 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/edt_shape"
-            android:hint="Enter Email"
+            android:background="@drawable/login_ed_back_shape"
+            android:drawableLeft="@drawable/close_envelope"
+            android:drawablePadding="12dp"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="10dp"
-            android:textAlignment="center" />
+            android:textAlignment="textStart"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
 
         <EditText
             android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/edt_shape"
-            android:hint="Enter Password"
+            android:background="@drawable/login_ed_back_shape"
+            android:drawableLeft="@drawable/key_white"
+            android:drawablePadding="12dp"
+            android:hint=" Password"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:textAlignment="center" />
+            android:paddingLeft="10dp"
+            android:textAlignment="textStart"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
 
         <EditText
             android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/edt_shape"
-            android:hint="Enter name"
+            android:background="@drawable/login_ed_back_shape"
+            android:drawableLeft="@drawable/usernamee"
+            android:drawablePadding="12dp"
+            android:hint="Name"
             android:inputType="text"
             android:padding="10dp"
-            android:textAlignment="center" />
+            android:textAlignment="textStart"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
 
         <EditText
             android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/edt_shape"
-            android:hint="Enter phone"
+            android:background="@drawable/login_ed_back_shape"
+            android:drawableLeft="@drawable/calli"
+            android:drawablePadding="12dp"
+            android:hint="Phone"
             android:inputType="phone"
             android:maxLength="10"
             android:padding="10dp"
-            android:textAlignment="center" />
+            android:textAlignment="textStart"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <EditText
+            android:id="@+id/edtAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/login_ed_back_shape"
+            android:drawableLeft="@drawable/home1"
+            android:drawablePadding="12dp"
+            android:hint="Address"
+            android:inputType="text"
+            android:maxLines="10"
+            android:padding="10dp"
+            android:textAlignment="textStart"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
 
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginRight="120dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/edt_shape"
-            android:padding="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/login_bt_shape"
             android:text="Register"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#EF2236"
+            android:textSize="19dp" />
     </LinearLayout>
 
-</FrameLayout>
+</ScrollView>

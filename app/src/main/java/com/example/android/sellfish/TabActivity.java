@@ -26,6 +26,7 @@ public class TabActivity extends AppCompatActivity {
     ViewPager viewPager;
     android.support.v7.widget.Toolbar toolbar;
     TextView txtSkip;
+    String parent_activity;
 
     // @InjectView(R.id.txtSkipLogin)TextView txtSkip;
     @Override
@@ -33,12 +34,14 @@ public class TabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
         ButterKnife.inject(this);
-
         toolbar = findViewById(R.id.toolbar11);
         setSupportActionBar(toolbar);
         txtSkip = findViewById(R.id.txtSkipLogin);
+        Bundle bundle = new Bundle();
+        bundle.putString("PARENT_ACTIVITY", "TabActivity");
         loginFragment = new LoginFragment();
         registrationFragment = new RegistrationFragment();
+        registrationFragment.setArguments(bundle);
         viewPager = findViewById(R.id.viewpager);
         setupViewPager(viewPager);
       /*  toolbar = findViewById(R.id.toolbar);
@@ -84,7 +87,6 @@ public class TabActivity extends AppCompatActivity {
         adapter.addFragment(registrationFragment, "Register");
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
-
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
