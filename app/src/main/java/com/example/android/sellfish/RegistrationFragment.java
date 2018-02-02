@@ -117,7 +117,7 @@ public class RegistrationFragment extends Fragment {
             public void onSuccess(String response) {
                 Log.d("Response", response);
                 if (response.contains("OK")) {
-                    intent = new Intent(getActivity(), LoginActivity.class);
+                    intent = new Intent(getActivity(), TabActivity.class);
                     getActivity().finish();
                     startActivity(intent);
                     Toast.makeText(getActivity(), "Registration successful", Toast.LENGTH_SHORT).show();

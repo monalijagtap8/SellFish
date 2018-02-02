@@ -16,12 +16,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,6 +58,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toast toast;
     SharedPreferences.Editor editor;
     Intent intent;
+    String activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,14 +69,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         editor = sp.edit();
         user_id = sp.getString("USER_ID", "");
-        /*for (int i = 1; i <= 4; i++) {
+        //for (int i = 1; i <= 4; i++) {
             DefaultSliderView textSliderView = new DefaultSliderView(this);
-            textSliderView.image("http://yashodeepacademy.co.in/slider/" + i + ".jpg");
-            //  textSliderView.image("http://orientalbirdimages.org/images/data/striated_laughingthrush_0001.jpg");
+        //textSliderView.image("http://yashodeepacademy.co.in/slider/" + i + ".jpg");
+        textSliderView.image(R.drawable.f1);
+        textSliderView.image(R.drawable.f2);
+        textSliderView.image(R.drawable.f3);
+        textSliderView.image(R.drawable.f4);
             sliderShow.addSlider(textSliderView);
             animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
 
-        }*/
+        // }
 
       /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -170,12 +176,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             back_pressed = System.currentTimeMillis();
         }
     }
-
     public void getItemCount() {
         volleyRequest = VolleyRequest.getObject();
         volleyRequest.setContext(getApplicationContext());
-        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=" + user_id);
-        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=" + user_id);
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=17");
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=17");
         volleyRequest.getResponse(new ServerCallback() {
             @Override
             public void onSuccess(String response) {
@@ -184,9 +189,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Log.d(response, "rcount");
                 cartCount.setText(response);
                 if (count > 9) {
-                    cartCount.setPadding(2, 0, 0, 0);
+                    cartCount.setPadding(8, 0, 0, 0);
                 } else {
-                    cartCount.setPadding(6, 0, 0, 0);
+                    cartCount.setPadding(14, 0, 0, 0);
                 }
 
 

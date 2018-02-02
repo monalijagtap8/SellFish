@@ -44,7 +44,7 @@ public class LoginFragment extends Fragment {
     VolleyRequest volleyRequest;
     View enquireDialog;
     Intent intent;
-    String email, passowrd, name, phone, user_id, pwd1, pwd2, email1;
+    String email, passowrd, name, phone, user_id, pwd1, pwd2, email1, address;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -196,6 +196,7 @@ public class LoginFragment extends Fragment {
                         email = jsonObject.getString("email");
                         phone = jsonObject.getString("phone");
                         user_id = jsonObject.getString("id");
+                        address = jsonObject.getString("address");
                         sp = getActivity().getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
                         editor = sp.edit();
                         editor.putBoolean("LOGGED_IN", true);
@@ -203,6 +204,7 @@ public class LoginFragment extends Fragment {
                         editor.putString("PHONE", phone);
                         editor.putString("EMAIL", email);
                         editor.putString("USER_ID", user_id);
+                        editor.putString("ADDRESS", address);
                         editor.commit();
 
                         Intent intent = new Intent(getActivity(), HomeActivity.class);

@@ -20,6 +20,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -42,6 +46,7 @@ public class Description extends AppCompatActivity {
     VolleyRequest volleyRequest;
     TextView tv;
     EditText et;
+    JSONObject object;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +67,17 @@ public class Description extends AppCompatActivity {
         txt_price.setText(price);
         txt_available.setText(available);
         txt_description.setText(desc);
-
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("item_id", item_id);
+            jsonObject.put("user_id", user_id);
+            JSONArray jArray = new JSONArray();
+            jArray.put(jsonObject);
+            object = new JSONObject();
+            object.put("jsonObject", jArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         Glide.with(Description.this).load("http://192.168.0.110:8001/routes/server/" + image).asBitmap().override(600, 600)
                 .placeholder(null).listener(new RequestListener<String, Bitmap>() {
@@ -127,7 +142,9 @@ public class Description extends AppCompatActivity {
                     public void onClick(View view) {
                         String number;
                         if (radiobtnCashOnDelivery.isChecked()) {
-                            startActivity(new Intent(Description.this, CashOnDelivery.class));
+                            Intent intent = new Intent(Description.this, CashOnDelivery.class);
+                            intent.putExtra("OBJECT", object + "");
+                            startActivity(intent);
                             alertDialog.dismiss();
                             finish();
 
