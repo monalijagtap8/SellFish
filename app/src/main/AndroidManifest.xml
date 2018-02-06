@@ -56,7 +56,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CashOnDelivery"></activity>
+        <activity
+            android:name=".CashOnDelivery"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>
 

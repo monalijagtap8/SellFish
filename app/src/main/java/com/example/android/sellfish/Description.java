@@ -1,7 +1,9 @@
 package com.example.android.sellfish;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -43,16 +45,20 @@ public class Description extends AppCompatActivity {
     Button btnAddToCart;
     @InjectView(R.id.btn_buyNow)
     Button btnBuyNow;
+    @InjectView(R.id.img_back)
+    ImageView imgBack;
     VolleyRequest volleyRequest;
     TextView tv;
     EditText et;
     JSONObject object;
+    Intent intent;
+    SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
         ButterKnife.inject(this);
-
+        sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
 
         name = getIntent().getStringExtra("NAME");
         image = getIntent().getStringExtra("IMAGE");
@@ -95,24 +101,36 @@ public class Description extends AppCompatActivity {
                 return false;
             }
         }).error(null).into(imgView);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                volleyRequest = VolleyRequest.getObject();
-                volleyRequest.setContext(Description.this);
-                Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_id);
-                volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_id);
-                volleyRequest.getResponse(new ServerCallback() {
-                    @Override
-                    public void onSuccess(String response) {
+                if (sp.getBoolean("LOGGED_IN", false)) {
+                    volleyRequest = VolleyRequest.getObject();
+                    volleyRequest.setContext(Description.this);
+                    Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_id);
+                    volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_id);
+                    volleyRequest.getResponse(new ServerCallback() {
+                        @Override
+                        public void onSuccess(String response) {
 
-                        Log.d("addToCart", response);
-                        Toast.makeText(Description.this, "clicked", Toast.LENGTH_LONG).show();
+                            Log.d("addToCart", response);
+                            Toast.makeText(Description.this, "Item added to cart", Toast.LENGTH_LONG).show();
 
-
-                    }
-                });
+                        }
+                    });
+                } else {
+                    intent = new Intent(getApplicationContext(), TabActivity.class);
+                    finish();
+                    startActivity(intent);
+                }
             }
         });
         btnBuyNow.setOnClickListener(new View.OnClickListener() {
@@ -152,12 +170,17 @@ public class Description extends AppCompatActivity {
                             Toast.makeText(Description.this, "PayUMoney will be add soon", Toast.LENGTH_LONG).show();
                     }
                 });
-                alertDialog.show();
+                if (sp.getBoolean("LOGGED_IN", false)) {
+                    alertDialog.show();
+                } else {
+                    intent = new Intent(getApplicationContext(), TabActivity.class);
+                    finish();
+                    startActivity(intent);
+                }
             }
         });
 
 
     }
-
 
 }

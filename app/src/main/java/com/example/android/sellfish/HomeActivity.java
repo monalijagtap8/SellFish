@@ -18,10 +18,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.arlib.floatingsearchview.FloatingSearchView;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 
@@ -37,8 +37,9 @@ import butterknife.InjectView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static List<ItemSuggestions> items;
     @InjectView(R.id.search_view)
-    SearchView searchView;
+    FloatingSearchView searchView;
     @InjectView(R.id.img_viewCart)
     ImageView viewCart;
     @InjectView(R.id.cartCount)
@@ -71,7 +72,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         user_id = sp.getString("USER_ID", "");
         //for (int i = 1; i <= 4; i++) {
             DefaultSliderView textSliderView = new DefaultSliderView(this);
-        //textSliderView.image("http://yashodeepacademy.co.in/slider/" + i + ".jpg");
+        //  textSliderView.image("http://yashodeepacademy.co.in/slider/" + i + ".jpg");
         textSliderView.image(R.drawable.f1);
         textSliderView.image(R.drawable.f2);
         textSliderView.image(R.drawable.f3);
@@ -120,7 +121,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             item_data.name = json_data.getString("name");
                             item_data.type = json_data.getString("type");
                             item_data.desc = json_data.getString("description");
-                            item_data.price = json_data.getInt("price");
+                            item_data.price = json_data.getString("price");
                             item_data.id = json_data.getInt("id");
                             item_data.image=json_data.getString("image_path");
                             data.add(item_data);
@@ -140,7 +141,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                     }
                 }
-
             }
         });
         viewCart.setOnClickListener(new View.OnClickListener() {
@@ -179,8 +179,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void getItemCount() {
         volleyRequest = VolleyRequest.getObject();
         volleyRequest.setContext(getApplicationContext());
-        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=17");
-        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=17");
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=" + user_id);
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=" + user_id);
         volleyRequest.getResponse(new ServerCallback() {
             @Override
             public void onSuccess(String response) {

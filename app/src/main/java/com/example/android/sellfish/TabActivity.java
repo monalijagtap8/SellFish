@@ -1,6 +1,8 @@
 package com.example.android.sellfish;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -27,12 +29,19 @@ public class TabActivity extends AppCompatActivity {
     android.support.v7.widget.Toolbar toolbar;
     TextView txtSkip;
     String parent_activity;
+    SharedPreferences sp;
 
     // @InjectView(R.id.txtSkipLogin)TextView txtSkip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
+        sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
+        if (sp.getBoolean("LOGGED_IN", false)) {
+            intent = new Intent(TabActivity.this, HomeActivity.class);
+            finish();
+            startActivity(intent);
+        }
         ButterKnife.inject(this);
         toolbar = findViewById(R.id.toolbar11);
         setSupportActionBar(toolbar);

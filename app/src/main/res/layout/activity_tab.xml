@@ -33,7 +33,7 @@
                 android:id="@+id/txtSkipLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_marginLeft="230dp"
                 android:text="Skip"
                 android:textColor="@color/black"
                 android:textSize="20dp" />

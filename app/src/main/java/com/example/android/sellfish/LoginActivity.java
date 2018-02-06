@@ -13,6 +13,4 @@ public class LoginActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         LoginFragment loginFragment = (LoginFragment) fragmentManager.findFragmentById(R.id.fragLogin);
     }
-
-
 }

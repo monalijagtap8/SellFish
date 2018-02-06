@@ -147,7 +147,6 @@ public class LoginFragment extends Fragment {
 
                 } else {
                     Toast.makeText(getActivity(), "User does not exists", Toast.LENGTH_SHORT).show();
-
                 }
 
             }
@@ -165,7 +164,7 @@ public class LoginFragment extends Fragment {
             public void onSuccess(String response) {
                 Log.d("Response", response);
                 if (response.contains("OK") || response.contains("UPDATED")) {
-                    intent = new Intent(getActivity(), LoginActivity.class);
+                    intent = new Intent(getActivity(), TabActivity.class);
                     getActivity().finish();
                     startActivity(intent);
                     Toast.makeText(getActivity(), "Password reset successfully", Toast.LENGTH_SHORT).show();

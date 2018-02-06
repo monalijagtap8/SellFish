@@ -37,6 +37,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     SharedPreferences.Editor editor;
     String user_id;
     VolleyRequest volleyRequest;
+    Intent intent;
     private Context context;
     private LayoutInflater inflater;
 
@@ -56,7 +57,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         myHolder = (MyHolder) holder;
     }
 
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.container_adapter, parent, false);
@@ -67,7 +67,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         return holder;
     }
 
-
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         final MyHolder myHolder = (MyHolder) holder;
@@ -75,23 +74,23 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         final DataCart item_data = data.get(position);
         Log.d("position", position + "");
 
-            myHolder.txt_name.setText(item_data.name);
-            myHolder.btn_description.setText("Description");
-            myHolder.btn_addToCart.setText("add to cart");
+        myHolder.txt_name.setText(item_data.name);
+        myHolder.btn_description.setText("Description");
+        myHolder.btn_addToCart.setText("add to cart");
         user_id = sp.getString("USER_ID", "");
         Glide.with(context).load("http://192.168.0.110:8001/routes/server/" + item_data.image).asBitmap().override(600, 600)
                 .placeholder(null).listener(new RequestListener<String, Bitmap>() {
             @Override
             public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
-                Log.d( "image","http://192.168.0.110:8001/routes/server/"+item_data.image);
+                Log.d("image", "http://192.168.0.110:8001/routes/server/" + item_data.image);
                 myHolder.imageView.setVisibility(View.VISIBLE);
                 return false;
             }
 
             @Override
             public boolean onResourceReady(Bitmap resource, String model, Target<Bitmap> target, boolean isFromMemoryCache, boolean isFirstResource) {
-               // myHolder.imageView.setVisibility(View.GONE);
-                Log.d( "image","http://192.168.0.110:8001/routes/server/"+item_data.image);
+                // myHolder.imageView.setVisibility(View.GONE);
+                Log.d("image", "http://192.168.0.110:8001/routes/server/" + item_data.image);
                 return false;
             }
         }).error(null).into(myHolder.imageView);
@@ -99,19 +98,24 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         myHolder.btn_addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (sp.getBoolean("LOGGED_IN", false)) {
+                    volleyRequest = VolleyRequest.getObject();
+                    volleyRequest.setContext(context);
+                    Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.id);
+                    volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.id);
+                    volleyRequest.getResponse(new ServerCallback() {
+                        @Override
+                        public void onSuccess(String response) {
 
-                volleyRequest = VolleyRequest.getObject();
-                volleyRequest.setContext(context);
-                Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.id);
-                volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.id);
-                volleyRequest.getResponse(new ServerCallback() {
-                    @Override
-                    public void onSuccess(String response) {
-
-                        Log.d("Responsecart", response);
-                        refresh();
-                    }
-                });
+                            Log.d("Responsecart", response);
+                            refresh();
+                        }
+                    });
+                } else {
+                    intent = new Intent(context, TabActivity.class);
+                    ((Activity) context).finish();
+                    context.startActivity(intent);
+                }
             }
         });
         myHolder.btn_description.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +143,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         context.startActivity(i);
     }
 
-
     @Override
     public int getItemCount() {
         return data.size();
@@ -147,7 +150,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     class MyHolder extends RecyclerView.ViewHolder {
         TextView txt_name;
-        Button btn_addToCart,btn_description;
+        Button btn_addToCart, btn_description;
         ImageView imageView;
         RelativeLayout relativeLayout;
 
@@ -155,8 +158,8 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             super(itemView);
             txt_name = itemView.findViewById(R.id.txt_name);
             btn_addToCart = itemView.findViewById(R.id.btn_addToCart);
-            btn_description= itemView.findViewById(R.id.btn_description);
-            imageView= itemView.findViewById(R.id.image_view);
+            btn_description = itemView.findViewById(R.id.btn_description);
+            imageView = itemView.findViewById(R.id.image_view);
             relativeLayout = itemView.findViewById(R.id.relativeAdapter);
         }
     }

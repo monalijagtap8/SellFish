@@ -5,6 +5,6 @@ package com.example.android.sellfish;
  */
 
 public class DataCart {
-    String name,image,desc,type;
-    int price, id;
+    String name, image, desc, type, price;
+    int id;
 }

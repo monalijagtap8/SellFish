@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,6 +39,8 @@ public class CashOnDelivery extends AppCompatActivity {
     EditText edtAddress;
     @InjectView(R.id.btn_order)
     Button btnOrdrer;
+    @InjectView(R.id.img_back)
+    ImageView imgBack;
 
 
     @Override
@@ -53,23 +56,39 @@ public class CashOnDelivery extends AppCompatActivity {
         edtName.setText(name);
         edtPhone.setText(phone);
         edtAddress.setText(address);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         btnOrdrer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    JSONObject jsonObject = new JSONObject(getIntent().getStringExtra("OBJECT"));
+                    final JSONObject jsonObject = new JSONObject(getIntent().getStringExtra("OBJECT"));
                     Log.d(jsonObject + "", "JJJ");
                     RequestQueue requestQueue = Volley.newRequestQueue(CashOnDelivery.this);
+                    Log.d("Url1", "http://192.168.0.110:8001/routes/server/app/myOrder.rfa.php");
                     JsonObjectRequest jsonObjReq = new JsonObjectRequest(
                             Request.Method.POST, "http://192.168.0.110:8001/routes/server/app/myOrder.rfa.php", jsonObject,
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
                                     Log.d("ResponseODA", response.toString());
+                                    try {
+                                        Object object = jsonObject.get("jsonObject");
+                                        Log.d("Object1", object + "");
+                                        Log.d("Item", jsonObject.getString("item_id"));
+
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
                                     Toast.makeText(CashOnDelivery.this, "Your order placed successfully..!", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(CashOnDelivery.this, HomeActivity.class));
                                     finish();
-
                                 }
                             }, new Response.ErrorListener() {
 

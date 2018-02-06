@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -47,6 +50,7 @@ public class RegistrationFragment extends Fragment {
     SharedPreferences.Editor editor;
     Bundle bundle;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,6 +63,7 @@ public class RegistrationFragment extends Fragment {
         if (parent_activity.equals("UserProfile")) {
             edtPassword.setVisibility(View.GONE);
             btnRegister.setText("update");
+            getData();
         }
         return view;
     }
@@ -131,6 +136,40 @@ public class RegistrationFragment extends Fragment {
                     Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getActivity(), "Registration failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void getData() {
+
+        email = sp.getString("EMAIL", "");
+        Log.d("Id", email);
+        volleyRequest = VolleyRequest.getObject();
+        volleyRequest.setContext(getActivity());
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchUserProfile.rfa.php?email_id=" + email);
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/fetchUserProfile.rfa.php?email_id=" + email);
+        volleyRequest.getResponse(new ServerCallback() {
+            @Override
+            public void onSuccess(String response) {
+                Log.d("Response*", response);
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    name = jsonObject.getString("name");
+                    email = jsonObject.getString("email");
+                    phone = jsonObject.getString("phone");
+                    password = jsonObject.getString("password");
+                    address = jsonObject.getString("address");
+
+                    Log.d("Name", name);
+
+                    edtName.setText(name);
+                    edtPhone.setText(phone);
+                    edtEmail.setText(email);
+                    edtAddress.setText(address);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         });

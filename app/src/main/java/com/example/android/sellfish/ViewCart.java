@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ public class ViewCart extends AppCompatActivity {
     Button addItem;
     @InjectView(R.id.btn_continue)
     Button btnContinue;
+    @InjectView(R.id.img_back)
+    ImageView imgBack;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     List<DataViewCart> data;
@@ -42,6 +45,8 @@ public class ViewCart extends AppCompatActivity {
     RecyclerView recyclerView;
     AdapterViewCart adapter;
     JSONArray jsonArray;
+    Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,55 +55,14 @@ public class ViewCart extends AppCompatActivity {
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         editor = sp.edit();
         user_id = sp.getString("USER_ID", "");
-        volleyRequest = VolleyRequest.getObject();
-        volleyRequest.setContext(getApplicationContext());
-        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchCartItems.rfa.php?user_id=17");
-        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/fetchCartItems.rfa.php?user_id=17");
-        volleyRequest.getResponse(new ServerCallback() {
+        fetch();
+        imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(String response) {
-                Log.d("ResponseVC", response);
-                if (!response.contains("nodata")) {
-                    try {
-                        data = new ArrayList<>();
-                        jArray = new JSONArray(response);
-                        jsonArray = new JSONArray();
-                        for (int i = 0; i < jArray.length(); i++) {
-                            Log.d("JarrayLength", jArray.length() + "");
-                            json_data = jArray.getJSONObject(i);
-                            DataViewCart item_data = new DataViewCart();
-                            item_data.name = json_data.getString("name");
-                            item_data.type = json_data.getString("type");
-                            item_data.desc = json_data.getString("description");
-                            item_data.price = json_data.getInt("price");
-                            item_data.id = json_data.getInt("id");
-                            item_data.quantity = json_data.getInt("quantity");
-                            item_data.image = json_data.getString("image_path");
-                            item_data.user_id = json_data.getString("userId");
-                            item_data.item_id = json_data.getString("itemId");
-                            data.add(item_data);
-                            JSONObject object = new JSONObject();
-                            object.put("item_id", item_data.item_id);
-                            object.put("user_id", item_data.user_id);
-                            jsonArray.put(object.toString());
-
-                            Log.d(jsonArray + "", "Array");
-                            Log.d(data.size() + "", "data");
-                            Log.d(item_data.name + "", "dataname");
-                        }
-                        recyclerView = findViewById(R.id.cartlist);
-                        recyclerView.setVisibility(View.VISIBLE);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(ViewCart.this));
-                        adapter = new AdapterViewCart(ViewCart.this, data);
-                        recyclerView.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-
-                    }
-                }
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
+
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,6 +120,60 @@ public class ViewCart extends AppCompatActivity {
         });
 
     }
+
+    public void fetch() {
+        volleyRequest = VolleyRequest.getObject();
+        volleyRequest.setContext(getApplicationContext());
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchCartItems.rfa.php?user_id=" + user_id);
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/fetchCartItems.rfa.php?user_id=" + user_id);
+        volleyRequest.getResponse(new ServerCallback() {
+            @Override
+            public void onSuccess(String response) {
+                Log.d("ResponseVC", response);
+                if (!response.contains("nodata")) {
+                    try {
+                        data = new ArrayList<>();
+                        jArray = new JSONArray(response);
+                        jsonArray = new JSONArray();
+                        for (int i = 0; i < jArray.length(); i++) {
+                            Log.d("JarrayLength", jArray.length() + "");
+                            json_data = jArray.getJSONObject(i);
+                            DataViewCart item_data = new DataViewCart();
+                            item_data.name = json_data.getString("name");
+                            item_data.type = json_data.getString("type");
+                            item_data.desc = json_data.getString("description");
+                            item_data.price = json_data.getString("price");
+                            item_data.id = json_data.getInt("id");
+                            item_data.quantity = json_data.getInt("quantity");
+                            item_data.image = json_data.getString("image_path");
+                            item_data.user_id = json_data.getString("userId");
+                            item_data.item_id = json_data.getString("itemId");
+                            data.add(item_data);
+                            JSONObject object = new JSONObject();
+                            object.put("item_id", item_data.item_id);
+                            object.put("user_id", item_data.user_id);
+                            jsonArray.put(object.toString());
+
+                            Log.d(jsonArray + "", "Array");
+                            Log.d(data.size() + "", "data");
+                            Log.d(item_data.name + "", "dataname");
+                        }
+                        recyclerView = findViewById(R.id.cartlist);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(ViewCart.this));
+                        adapter = new AdapterViewCart(ViewCart.this, data);
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    findViewById(R.id.txtNoItems).setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
+
 
     @Override
     public void onBackPressed() {

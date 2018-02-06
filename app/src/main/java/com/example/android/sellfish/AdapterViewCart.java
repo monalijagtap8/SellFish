@@ -91,7 +91,7 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
         myHolder.txt_name.setText(item_data.name);
         myHolder.txt_type.setText(item_data.type);
         myHolder.txt_quantity.setText(item_data.quantity + "");
-        myHolder.txt_price.setText(item_data.price + "");
+        myHolder.txt_price.setText(item_data.price);
 
         Glide.with(context).load("http://192.168.0.110:8001/routes/server/" + item_data.image).asBitmap().override(600, 600)
                 .placeholder(null).listener(new RequestListener<String, Bitmap>() {
@@ -117,7 +117,7 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 int quantity = Integer.parseInt(myHolder.txt_quantity.getText() + "");
                 myHolder.txt_quantity.setText(++quantity + "");
                 updateQuantity(item_data.user_id, item_data.item_id, "add");
-                TastyToast.makeText(context, "Another Tiffin box added..!", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+                TastyToast.makeText(context, "Item added..!", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
             }
         });
 
@@ -130,7 +130,7 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     myHolder.txt_quantity.setText(--quantity + "");
                 updateQuantity(item_data.user_id, item_data.item_id, "delete");
 
-                TastyToast.makeText(context, " Tiffin box Removed..", TastyToast.LENGTH_SHORT, TastyToast.CONFUSING);
+                TastyToast.makeText(context, " Item Removed..", TastyToast.LENGTH_SHORT, TastyToast.CONFUSING);
 
             }
         });
@@ -203,7 +203,6 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public MyHolder(View itemView) {
             super(itemView);
-
             btn_add = itemView.findViewById(R.id.btn_add);
             btn_remove = itemView.findViewById(R.id.btn_remove);
             btn_delete = itemView.findViewById(R.id.btn_delete);
@@ -212,7 +211,6 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
             txt_price = itemView.findViewById(R.id.txt_price);
             txt_quantity = itemView.findViewById(R.id.txt_quantity);
             imageView = itemView.findViewById(R.id.img_viewCart);
-
         }
     }
 }
