@@ -59,6 +59,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toast toast;
     SharedPreferences.Editor editor;
     Intent intent;
+    int imageCount = 2131165299;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +71,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         editor = sp.edit();
         user_id = sp.getString("USER_ID", "");
-        //for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 4; i++) {
             DefaultSliderView textSliderView = new DefaultSliderView(this);
-        //  textSliderView.image("http://yashodeepacademy.co.in/slider/" + i + ".jpg");
-        textSliderView.image(R.drawable.f1);
-        textSliderView.image(R.drawable.f2);
-        textSliderView.image(R.drawable.f3);
-        textSliderView.image(R.drawable.f4);
+            textSliderView.image(imageCount);
+            imageCount++;
             sliderShow.addSlider(textSliderView);
             animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
+            Log.d(R.drawable.f1 + " " + R.drawable.f2 + " " + R.drawable.f3 + " " + R.drawable.f3, "f");
 
-        // }
+        }
 
       /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +131,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         recyclerView = findViewById(R.id.Listmenu);
                         recyclerView.setVisibility(View.VISIBLE);
                         recyclerView.setLayoutManager(new GridLayoutManager(HomeActivity.this, 2));
+                        recyclerView.setNestedScrollingEnabled(false);
+                        recyclerView.setHasFixedSize(false);
                         adapter = new AdapterCart(HomeActivity.this, data);
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
