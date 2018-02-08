@@ -30,7 +30,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     List<DataCart> data = Collections.emptyList();
     MyHolder myHolder;
-
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     String user_id;
@@ -134,7 +133,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             }
         });
     }
-
 
     public void refresh() {
         Intent i = ((Activity) context).getIntent();

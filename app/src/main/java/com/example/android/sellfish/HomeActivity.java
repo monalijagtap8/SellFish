@@ -64,7 +64,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Intent intent;
     int imageCount = 2131165299;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +83,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Log.d(R.drawable.f1 + " " + R.drawable.f2 + " " + R.drawable.f3 + " " + R.drawable.f3, "f");
 
         }
-
-
       /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,7 +172,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
 
             } else {
-                // ask user to press back button one more time to close app
+
                 toast = Toast.makeText(getBaseContext(), "Press once again to exit!", Toast.LENGTH_SHORT);
                 toast.show();
             }
