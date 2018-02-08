@@ -118,7 +118,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             Log.d("JarrayLength", jArray.length() + "");
                             json_data = jArray.getJSONObject(i);
                             DataCart item_data = new DataCart();
-                            item_data.name = json_data.getString("name");
+                            item_data.name = json_data.getString("itemName");
                             item_data.type = json_data.getString("type");
                             item_data.desc = json_data.getString("description");
                             item_data.price = json_data.getString("price");

@@ -35,10 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50sp"
             android:text="" />
-
-
     </RadioGroup>
-
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/buttonCountinue"
         android:layout_width="wrap_content"
@@ -48,7 +45,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="90dp"
         android:padding="12dp"
-        android:text="Couninue"
+        android:text="Continue"
         android:textSize="17dp" />
 
 </RelativeLayout>

@@ -46,6 +46,7 @@ public class ViewCart extends AppCompatActivity {
     AdapterViewCart adapter;
     JSONArray jsonArray;
     Intent intent;
+    JSONObject jsonObject1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +95,12 @@ public class ViewCart extends AppCompatActivity {
                 radiobtnCashOnDelivery.setText("Cash On Delivery");
                 radiobtnPayUMoney.setText("PayUMoney");
                 final JSONObject jsonObject = new JSONObject();
+
+                String str;
                 try {
                     jsonObject.put("jsonObject", jsonArray);
+                   /* str=jsonObject.toString().replaceAll("\\\\","");
+                   jsonObject1=new JSONObject(str);*/
                     Log.d(jsonObject + "", "object");
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -110,7 +115,6 @@ public class ViewCart extends AppCompatActivity {
                             startActivity(intent);
                             alertDialog.dismiss();
                             finish();
-
                         } else
                             Toast.makeText(ViewCart.this, "PayUMoney will be add soon", Toast.LENGTH_LONG).show();
                     }
@@ -139,7 +143,9 @@ public class ViewCart extends AppCompatActivity {
                             Log.d("JarrayLength", jArray.length() + "");
                             json_data = jArray.getJSONObject(i);
                             DataViewCart item_data = new DataViewCart();
-                            item_data.name = json_data.getString("name");
+                            String item_id = "item_id";
+                            String user_id = "user_id";
+                            item_data.name = json_data.getString("itemName");
                             item_data.type = json_data.getString("type");
                             item_data.desc = json_data.getString("description");
                             item_data.price = json_data.getString("price");
@@ -148,11 +154,16 @@ public class ViewCart extends AppCompatActivity {
                             item_data.image = json_data.getString("image_path");
                             item_data.user_id = json_data.getString("userId");
                             item_data.item_id = json_data.getString("itemId");
+                            Log.d("UserId", item_data.user_id);
+                            Log.d("ItemId", item_data.item_id);
                             data.add(item_data);
+
                             JSONObject object = new JSONObject();
-                            object.put("item_id", item_data.item_id);
-                            object.put("user_id", item_data.user_id);
-                            jsonArray.put(object.toString());
+                            object.put(item_id, item_data.item_id);
+                            object.put(user_id, item_data.user_id);
+                            Log.d("Object", object + "");
+                            jsonArray.put(object);
+                            Log.d("JArray11", jsonArray + "");
 
                             Log.d(jsonArray + "", "Array");
                             Log.d(data.size() + "", "data");
@@ -173,7 +184,6 @@ public class ViewCart extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     public void onBackPressed() {

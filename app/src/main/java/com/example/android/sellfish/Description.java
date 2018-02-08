@@ -81,6 +81,7 @@ public class Description extends AppCompatActivity {
             jArray.put(jsonObject);
             object = new JSONObject();
             object.put("jsonObject", jArray);
+            Log.d("object", object + "");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -121,9 +122,8 @@ public class Description extends AppCompatActivity {
                         @Override
                         public void onSuccess(String response) {
 
-                            Log.d("addToCart", response);
+                            Log.d("cbcjhe", response);
                             Toast.makeText(Description.this, "Item added to cart", Toast.LENGTH_LONG).show();
-
                         }
                     });
                 } else {

@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,8 +30,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     List<DataCart> data = Collections.emptyList();
     MyHolder myHolder;
-    VolleyRequest urlRequest;
-    ArrayList<String> list;
+
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     String user_id;
@@ -135,7 +133,9 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
             }
         });
+
     }
+
 
     public void refresh() {
         Intent i = ((Activity) context).getIntent();
