@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,10 +19,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.arlib.floatingsearchview.FloatingSearchView;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 
@@ -38,12 +39,14 @@ import butterknife.InjectView;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static List<ItemSuggestions> items;
-    @InjectView(R.id.search_view)
-    FloatingSearchView searchView;
+    @InjectView(R.id.search)
+    SearchView searchView;
     @InjectView(R.id.img_viewCart)
     ImageView viewCart;
     @InjectView(R.id.cartCount)
     TextView cartCount;
+    @InjectView(R.id.list_view)
+    ListView listView;
     @InjectView(R.id.slider)
     SliderLayout sliderShow;
     AdapterCart adapter;
@@ -60,6 +63,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     SharedPreferences.Editor editor;
     Intent intent;
     int imageCount = 2131165299;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +84,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Log.d(R.drawable.f1 + " " + R.drawable.f2 + " " + R.drawable.f3 + " " + R.drawable.f3, "f");
 
         }
+
 
       /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
