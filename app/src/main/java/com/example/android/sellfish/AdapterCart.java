@@ -105,7 +105,8 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                         public void onSuccess(String response) {
 
                             Log.d("Responsecart", response);
-                            refresh();
+                            ((HomeActivity) context).getItemCount();
+                            // refresh();
                         }
                     });
                 } else {
