@@ -35,13 +35,14 @@ public class TabActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab);
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         if (sp.getBoolean("LOGGED_IN", false)) {
             intent = new Intent(TabActivity.this, HomeActivity.class);
             finish();
             startActivity(intent);
         }
+        setContentView(R.layout.activity_tab);
+
         ButterKnife.inject(this);
         toolbar = findViewById(R.id.toolbar11);
         setSupportActionBar(toolbar);
@@ -98,7 +99,7 @@ public class TabActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    static class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 

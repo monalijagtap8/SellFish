@@ -28,7 +28,6 @@ import butterknife.OnClick;
 public class RegistrationFragment extends Fragment {
 
     View view;
-
     @InjectView(R.id.edtName)
     EditText edtName;
     @InjectView(R.id.edtPhone)
@@ -49,7 +48,6 @@ public class RegistrationFragment extends Fragment {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     Bundle bundle;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,6 +84,7 @@ public class RegistrationFragment extends Fragment {
                     flag = 1;
                 }
                 phone = edtPhone.getText().toString().trim();
+
                 if (phone.length() == 0 || phone.length() < 10) {
                     edtPhone.setError("Please enter phone");
                     flag = 1;

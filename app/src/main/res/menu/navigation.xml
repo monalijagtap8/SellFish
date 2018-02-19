@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_fish"
+        android:icon="@drawable/fish_icon"
+        android:title="Fish" />
+    <item
+        android:id="@+id/navigation_poultry"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Poultry" />
+
+    <item
+        android:id="@+id/navigation_mutton"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Mutton" />
+
+    <item
+        android:id="@+id/navigation_deals"
+        android:icon="@drawable/ic_profile_black_24dp"
+        android:title="Deals" />
+</menu>

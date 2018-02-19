@@ -9,30 +9,62 @@
             android:icon="@drawable/home"
             android:title="Home" />
         <item
+            android:id="@+id/nav_deals"
+            android:icon="@drawable/user_profile"
+            android:title="Deals" />
+        <item
+            android:id="@+id/nav_fish"
+            android:icon="@drawable/user_profile"
+            android:title="Fish" />
+        <item
+            android:id="@+id/nav_poultry"
+            android:icon="@drawable/user_profile"
+            android:title="Poultry" />
+        <item
+            android:id="@+id/nav_mutton"
+            android:icon="@drawable/user_profile"
+            android:title="Mutton" />
+        <item
             android:id="@+id/nav_user_account"
             android:icon="@drawable/user_profile"
-            android:title="Your Account" />
+            android:title="My Account" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_favourite"
+            android:icon="@drawable/user_profile"
+            android:title="My Favourites" />
+        <item
+            android:id="@+id/nav_find_product"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Didn't find your product?" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_contact_us"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/nav_rewards"
+            android:icon="@drawable/user_profile"
+            android:title="Rewards" />
+        <item
+            android:id="@+id/nav_Faq"
+            android:icon="@drawable/user_profile"
+            android:title="FAQ" />
+        <item
+            android:id="@+id/nav_Aboutus"
+            android:icon="@drawable/user_profile"
+            android:title="About Us" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+    <!--  <item android:title="Communicate">
+          <menu>
+              <item
+                  android:id="@+id/nav_share"
+                  android:icon="@drawable/ic_menu_share"
+                  android:title="Share" />
+              <item
+                  android:id="@+id/nav_send"
+                  android:icon="@drawable/ic_menu_send"
+                  android:title="Send" />
+          </menu>
+      </item>-->
 
 </menu>

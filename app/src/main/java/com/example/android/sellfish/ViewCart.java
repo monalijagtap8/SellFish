@@ -29,6 +29,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class ViewCart extends AppCompatActivity {
+
     VolleyRequest volleyRequest;
     String user_id;
     @InjectView(R.id.btn_additem)
@@ -122,7 +123,6 @@ public class ViewCart extends AppCompatActivity {
                 alertDialog.show();
             }
         });
-
     }
 
     public void fetch() {

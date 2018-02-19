@@ -16,6 +16,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -72,6 +73,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Intent intent;
     FloatingSearchView searchView;
     int imageCount = 2131165299;
+    MenuItem searchItem;
+    SearchView searchView1;
     private String mLastQuery = "Search...", TAG;
 
     @Override
@@ -96,15 +99,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
-      /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-*/
         getItemCount();
 
 
@@ -158,7 +152,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     } catch (JSONException e) {
 
                         e.printStackTrace();
-
                     }
                 }
             }
@@ -171,7 +164,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
-        items = new ArrayList<>();
+
         TAG = "*****kay rao**";
         fetchName();
 
@@ -180,10 +173,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
+        searchItem = menu.findItem(R.id.action_search1);
         searchView = (FloatingSearchView) MenuItemCompat.getActionView(searchItem);
+        //searchView.setBackgroundColor(Color.parseColor("#787878"));
+        searchView.setViewTextColor(Color.parseColor("#787878"));
+        searchView.setHintTextColor(Color.parseColor("#e9e9e9"));
+        items = new ArrayList<>();
         searchView.swapSuggestions(items);
+
         searchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, final String newQuery) {
@@ -196,14 +193,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         filteredcities.add(i);
                         Log.d("**********", i.getBody());
                     }
-
                 }
                 searchView.swapSuggestions(filteredcities);
 
                 searchView.hideProgress();
             }
-
-
         });
 
         searchView.setOnBindSuggestionCallback(new SearchSuggestionsAdapter.OnBindSuggestionCallback() {
@@ -234,18 +228,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public void onSuggestionClicked(SearchSuggestion searchSuggestion) {
                 ItemSuggestions citySuggetions1 = (ItemSuggestions) searchSuggestion;
 
-
                 Log.d("search", jArray.toString());
 
                 mLastQuery = searchSuggestion.getBody();
                 /////////////////Broooooooooooo here we can launch new activity///////////////////////////////
                 try {
 
-
                     for (int i = 0; i < jArray.length(); i++) {
                         Log.d("JarrayLength", jArray.length() + "");
                         json_data = jArray.getJSONObject(i);
-
                         name = json_data.getString("itemName");
                         desc = json_data.getString("description");
                         price = json_data.getString("price");
@@ -302,9 +293,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 for (ItemSuggestions i : items) {
                     if (i.getBody().contains(currentQuery)) {
                         filteredcities.add(i);
-
                     }
-
                 }
                 Log.d("harshu", currentQuery);
                 Log.d("harshada", "loves sourabh and viceversa");
@@ -354,8 +343,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
                         "Search for place or area");
                 startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
-
-
             }
         });
         searchView.setOnSuggestionsListHeightChanged(new FloatingSearchView.OnSuggestionsListHeightChanged() {
@@ -364,7 +351,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 //to sync recycler
             }
         });
-        // searchView.setOnQueryTextListener(HomeActivity.this);
+
 
         return true;
     }
@@ -386,7 +373,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Log.d("Responseitem", response);
                 if (!response.contains("nodata")) {
                     try {
-
                         jArray = new JSONArray(response);
 
                         for (int i = 0; i < jArray.length(); i++) {
@@ -450,8 +436,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 } else {
                     cartCount.setPadding(14, 0, 0, 0);
                 }
-
-
             }
         });
     }
@@ -491,14 +475,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(HomeActivity.this, HomeActivity.class);
             finish();
             startActivity(intent);
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
