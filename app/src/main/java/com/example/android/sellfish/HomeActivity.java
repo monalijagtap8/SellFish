@@ -89,6 +89,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Intent intent;
     int imageCount = 2131165302;
     List<String> search_list;
+    String loc;
     private String mLastQuery = "Search...", TAG;
 
     @Override
@@ -102,6 +103,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         editor = sp.edit();
         user_id = sp.getString("USER_ID", "");
+        loc=sp.getString("LOC","");
+        if(loc.isEmpty())
+        {
+            btn_location.setText("Location");
+        }
+        else
+        {
+            btn_location.setText(loc);
+        }
         for (int i = 1; i <= 5; i++) {
             DefaultSliderView textSliderView = new DefaultSliderView(this);
             textSliderView.image(imageCount);
@@ -213,8 +223,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             }
                         });
                         builderInner.show();*/
-
-                        btn_location.setText(arrayAdapter.getItem(which));
+                        loc=arrayAdapter.getItem(which);
+                        editor.putString("LOC",loc);
+                        editor.commit();
+                        btn_location.setText(loc);
                     }
                 });
                 builderSingle.show();
@@ -546,7 +558,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
-            } else {
+            }
+            else {
 
                 toast = Toast.makeText(getBaseContext(), "Press once again to exit!", Toast.LENGTH_SHORT);
                 toast.show();
@@ -614,11 +627,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }
 
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 }
