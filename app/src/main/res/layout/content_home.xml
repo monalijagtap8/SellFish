@@ -2,41 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerrelative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.android.sellfish.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
-
-    <!-- <android.support.v7.widget.CardView
-         android:id="@+id/searchviewCardView"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_centerHorizontal="true"
-         android:background="#000000"
-         android:padding="3dp"
-         app:cardCornerRadius="2dp"
-         app:cardElevation="8dp">
-
-         <com.arlib.floatingsearchview.FloatingSearchView
-             android:id="@+id/floating_search_view"
-             android:layout_width="match_parent"
-             android:layout_height="150dp"
-             app:floatingSearch_close_search_on_keyboard_dismiss="false"
-             app:floatingSearch_dimBackground="false"
-             app:floatingSearch_dismissOnOutsideTouch="true"
-             app:floatingSearch_leftActionMode="showHamburger"
-             app:floatingSearch_menu="@menu/menu_search_view"
-             app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
-             app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
-             app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
-             app:floatingSearch_searchHint="Search..."
-             app:floatingSearch_showSearchKey="true"
-             app:floatingSearch_suggestionsListAnimDuration="250" />
-
-
-     </android.support.v7.widget.CardView>-->
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -46,6 +18,80 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/dim_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <com.arlib.floatingsearchview.FloatingSearchView
+                    android:id="@+id/floating_search_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.98"
+                    app:floatingSearch_close_search_on_keyboard_dismiss="false"
+                    app:floatingSearch_dimBackground="false"
+                    app:floatingSearch_dismissOnOutsideTouch="true"
+                    app:floatingSearch_leftActionMode="showHamburger"
+                    app:floatingSearch_menu="@menu/menu_search_view"
+                    app:floatingSearch_searchHint="Search..."
+                    app:floatingSearch_showSearchKey="true"
+                    app:floatingSearch_suggestionsListAnimDuration="250" />
+
+                <TextView
+                    android:id="@+id/btn_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_weight="0.02"
+                    android:background="@color/white"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Location"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4">
+
+                <Button
+                    android:id="@+id/txt_fish"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Fish"
+                    android:textSize="15dp" />
+
+                <Button
+                    android:id="@+id/txt_mutton"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Mutton"
+                    android:textSize="15dp" />
+
+                <Button
+                    android:id="@+id/txt_poultry"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Poultry"
+                    android:textSize="15dp" />
+
+                <Button
+                    android:id="@+id/txt_deals"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Deals"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
 
             <android.support.v7.widget.CardView
                 android:id="@+id/sliderlayout1"
@@ -77,12 +123,126 @@
                 app:cardCornerRadius="2dp"
                 app:cardElevation="8dp">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/Listmenu"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="1dp"
-                    android:scrollbars="vertical" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/imageview_fish"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/fish" />
+
+                            <TextView
+                                android:id="@+id/textview_fish"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center_horizontal"
+                                android:text="Fish" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/imageview_mutton"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/mutton" />
+
+                            <TextView
+                                android:id="@+id/textview_mutton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center_horizontal"
+                                android:text="Mutton" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/imageview_poultry"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/poultry" />
+
+                            <TextView
+                                android:id="@+id/textview_poultry"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center_horizontal"
+                                android:text="Poultry" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/imageview_deals"
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/deals" />
+
+                            <TextView
+                                android:id="@+id/textview_deals"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center_horizontal"
+                                android:text="Deals" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/sliderlayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_alignParentStart="true"
+                        android:clickable="true"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:divider="@android:color/transparent"
+                        android:dividerHeight="0.0px"
+                        app:cardPreventCornerOverlap="false">
+
+                        <ImageView
+                            android:id="@+id/imageview_advt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
 
             </android.support.v7.widget.CardView>
         </LinearLayout>
