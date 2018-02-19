@@ -28,7 +28,7 @@
                 <com.arlib.floatingsearchview.FloatingSearchView
                     android:id="@+id/floating_search_view"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="0.98"
                     app:floatingSearch_close_search_on_keyboard_dismiss="false"
                     app:floatingSearch_dimBackground="false"
@@ -134,6 +134,7 @@
                         android:weightSum="2">
 
                         <FrameLayout
+                            android:id="@+id/layout_fish"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
@@ -155,6 +156,7 @@
                         </FrameLayout>
 
                         <FrameLayout
+                            android:id="@+id/layout_mutton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
@@ -182,6 +184,7 @@
                         android:weightSum="2">
 
                         <FrameLayout
+                            android:id="@+id/layout_poultry"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
@@ -203,6 +206,7 @@
                         </FrameLayout>
 
                         <FrameLayout
+                            android:id="@+id/layout_deals"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">

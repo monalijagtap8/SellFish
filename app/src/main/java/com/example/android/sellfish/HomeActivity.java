@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -56,6 +57,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     FloatingSearchView floatingSearchView;
     @InjectView(R.id.cartCount)
     TextView cartCount;
+    @InjectView(R.id.layout_fish)
+    FrameLayout layout_fish;
+    @InjectView(R.id.layout_mutton)
+    FrameLayout layout_mutton;
+    @InjectView(R.id.layout_poultry)
+    FrameLayout layout_poultry;
+    @InjectView(R.id.layout_deals)
+    FrameLayout layout_deals;
     @InjectView(R.id.btn_location)
     TextView btn_location;
     @InjectView(R.id.search_list)
@@ -214,11 +223,46 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         viewCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, ViewCart.class);
+                intent = new Intent(HomeActivity.this, ViewCart.class);
                 finish();
                 startActivity(intent);
             }
         });
+
+        layout_fish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                finish();
+            }
+
+        });
+
+        layout_mutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                finish();
+            }
+
+        });
+        layout_poultry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                finish();
+            }
+
+        });
+        layout_deals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                finish();
+            }
+
+        });
+
         items = new ArrayList<>();
         TAG = "*****kay rao**";
         fetchName();
