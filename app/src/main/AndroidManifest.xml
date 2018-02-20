@@ -59,7 +59,10 @@
         <activity
             android:name=".CashOnDelivery"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SubCategoryActivity">
+        <activity
+            android:name=".SubCategoryActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
