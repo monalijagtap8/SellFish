@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "350332138723",
+    "firebase_url": "https://monali-156709.firebaseio.com",
+    "project_id": "monali-156709",
+    "storage_bucket": "monali-156709.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350332138723:android:2c7abf9831a192b2",
+        "android_client_info": {
+          "package_name": "com.example.android.sellfish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350332138723-a9s8fhngs743o3cgg3pk0docl2iq23s2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.sellfish",
+            "certificate_hash": "df4077337d57f2343e0905b7373b2c8e0e5b1ce4"
+          }
+        },
+        {
+          "client_id": "350332138723-6sbagaad9gtdmj14f98jug8u3v497t1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMb_YVnX4iBN9IDvjc31jQjv76nXLkpFs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350332138723-6sbagaad9gtdmj14f98jug8u3v497t1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

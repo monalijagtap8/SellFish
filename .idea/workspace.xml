@@ -11,15 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9594c69-93b4-4ccd-8eb2-7f95bf4644e0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/google-services.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SellFish.iml" afterPath="$PROJECT_DIR$/SellFish.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/HomeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/notification_shape.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/notification_shape.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,8 +57,8 @@
       <file leaf-file-name="google-services.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/google-services.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="54" column="2" lean-forward="false" selection-start-line="54" selection-start-column="2" selection-end-line="54" selection-end-column="2" />
+            <state relative-caret-position="714">
+              <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -96,47 +90,47 @@
       <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/HomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="737" column="13" lean-forward="false" selection-start-line="737" selection-start-column="13" selection-end-line="737" selection-end-column="13" />
+            <state relative-caret-position="754">
+              <caret line="742" column="0" lean-forward="true" selection-start-line="742" selection-start-column="0" selection-end-line="742" selection-end-column="0" />
               <folding>
-                <element signature="e#5740#5771#0" expanded="true" />
-                <element signature="e#5773#5805#0" expanded="true" />
-                <element signature="e#8092#10420#0" expanded="true" />
-                <element signature="e#8414#8422#0" expanded="true" />
-                <element signature="e#8998#9226#0" expanded="true" />
-                <element signature="e#9225#9226#0" expanded="true" />
-                <element signature="e#9285#10356#0" expanded="true" />
-                <element signature="e#10355#10356#0" expanded="true" />
-                <element signature="e#10419#10420#0" expanded="true" />
-                <element signature="e#10459#10715#0" expanded="true" />
-                <element signature="e#10714#10715#0" expanded="true" />
-                <element signature="e#10758#10993#0" expanded="true" />
-                <element signature="e#10992#10993#0" expanded="true" />
-                <element signature="e#11038#11273#0" expanded="true" />
-                <element signature="e#11272#11273#0" expanded="true" />
-                <element signature="e#11318#11553#0" expanded="true" />
-                <element signature="e#11552#11553#0" expanded="true" />
-                <element signature="e#11596#11831#0" expanded="true" />
-                <element signature="e#11830#11831#0" expanded="true" />
-                <element signature="e#11870#12105#0" expanded="true" />
-                <element signature="e#12104#12105#0" expanded="true" />
-                <element signature="e#12147#12382#0" expanded="true" />
-                <element signature="e#12381#12382#0" expanded="true" />
-                <element signature="e#12424#12659#0" expanded="true" />
-                <element signature="e#12658#12659#0" expanded="true" />
-                <marker date="1519107738841" expanded="false" signature="12918:12934" ph="}" />
-                <marker date="1519107738841" expanded="false" signature="14300:14456" ph="(oldQuery, newQuery) → {" />
-                <marker date="1519107738841" expanded="false" signature="15104:15121" ph="}" />
-                <marker date="1519107738841" expanded="false" signature="15180:15403" ph="(suggestionView, leftIcon, textView, item, itemPosition) → {" />
-                <marker date="1519107738841" expanded="false" signature="16330:16345" ph="}" />
-                <marker date="1519107738841" expanded="false" signature="20864:21002" ph="(item) → {" />
-                <marker date="1519107738841" expanded="false" signature="21571:21586" ph="}" />
-                <marker date="1519107738841" expanded="false" signature="21650:21803" ph="(newHeight) → {" />
-                <marker date="1519107738841" expanded="false" signature="21847:21862" ph="}" />
-                <marker date="1519107738841" expanded="false" signature="22448:22545" ph="(response) → {" />
-                <marker date="1519107738841" expanded="false" signature="23610:23625" ph="}" />
-                <marker date="1519107738841" expanded="false" signature="24952:25049" ph="(response) → {" />
-                <marker date="1519107738841" expanded="false" signature="25431:25446" ph="}" />
+                <element signature="e#5737#5768#0" expanded="true" />
+                <element signature="e#5770#5802#0" expanded="true" />
+                <element signature="e#8089#10417#0" expanded="true" />
+                <element signature="e#8411#8419#0" expanded="true" />
+                <element signature="e#8995#9223#0" expanded="true" />
+                <element signature="e#9222#9223#0" expanded="true" />
+                <element signature="e#9282#10353#0" expanded="true" />
+                <element signature="e#10352#10353#0" expanded="true" />
+                <element signature="e#10416#10417#0" expanded="true" />
+                <element signature="e#10456#10712#0" expanded="true" />
+                <element signature="e#10711#10712#0" expanded="true" />
+                <element signature="e#10755#10990#0" expanded="true" />
+                <element signature="e#10989#10990#0" expanded="true" />
+                <element signature="e#11035#11270#0" expanded="true" />
+                <element signature="e#11269#11270#0" expanded="true" />
+                <element signature="e#11315#11550#0" expanded="true" />
+                <element signature="e#11549#11550#0" expanded="true" />
+                <element signature="e#11593#11828#0" expanded="true" />
+                <element signature="e#11827#11828#0" expanded="true" />
+                <element signature="e#11867#12102#0" expanded="true" />
+                <element signature="e#12101#12102#0" expanded="true" />
+                <element signature="e#12144#12379#0" expanded="true" />
+                <element signature="e#12378#12379#0" expanded="true" />
+                <element signature="e#12421#12656#0" expanded="true" />
+                <element signature="e#12655#12656#0" expanded="true" />
+                <marker date="1519108018317" expanded="false" signature="12915:12931" ph="}" />
+                <marker date="1519108018317" expanded="false" signature="14297:14453" ph="(oldQuery, newQuery) → {" />
+                <marker date="1519108018317" expanded="false" signature="15101:15118" ph="}" />
+                <marker date="1519108018317" expanded="false" signature="15177:15400" ph="(suggestionView, leftIcon, textView, item, itemPosition) → {" />
+                <marker date="1519108018317" expanded="false" signature="16327:16342" ph="}" />
+                <marker date="1519108018317" expanded="false" signature="20861:20999" ph="(item) → {" />
+                <marker date="1519108018317" expanded="false" signature="21568:21583" ph="}" />
+                <marker date="1519108018317" expanded="false" signature="21647:21800" ph="(newHeight) → {" />
+                <marker date="1519108018317" expanded="false" signature="21844:21859" ph="}" />
+                <marker date="1519108018317" expanded="false" signature="22445:22542" ph="(response) → {" />
+                <marker date="1519108018317" expanded="false" signature="23607:23622" ph="}" />
+                <marker date="1519108018317" expanded="false" signature="24949:25046" ph="(response) → {" />
+                <marker date="1519108018317" expanded="false" signature="25428:25443" ph="}" />
               </folding>
             </state>
           </provider>
@@ -3331,7 +3325,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.android.sellfish.HomeActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519107738924" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519108023676" />
       </method>
     </configuration>
     <configuration default="false" name="TabActivity" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
@@ -3380,7 +3374,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.android.sellfish.TabActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519107738924" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519108023676" />
       </method>
     </configuration>
     <configuration default="false" name="SubCategoryActivity" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
@@ -3429,7 +3423,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.android.sellfish.SubCategoryActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519107738924" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519108023676" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -3502,7 +3496,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519107738925" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519108023676" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3550,7 +3544,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519107738925" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519108023676" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3582,6 +3576,27 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -3712,7 +3727,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519107738927" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519108023678" />
       </method>
     </configuration>
     <list size="4">
@@ -3834,7 +3849,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519017324051</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Notification service added to homeactivity">
+      <created>1519107776384</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1519107776384</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3949,7 +3971,8 @@
     <MESSAGE value="Cash on delivery updated" />
     <MESSAGE value="pushed" />
     <MESSAGE value="Subcategories activity added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Subcategories activity added" />
+    <MESSAGE value="Notification service added to homeactivity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Notification service added to homeactivity" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -3961,16 +3984,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_registration.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -4424,49 +4437,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/google-services.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/HomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="737" column="13" lean-forward="false" selection-start-line="737" selection-start-column="13" selection-end-line="737" selection-end-column="13" />
+        <state relative-caret-position="754">
+          <caret line="742" column="0" lean-forward="true" selection-start-line="742" selection-start-column="0" selection-end-line="742" selection-end-column="0" />
           <folding>
-            <element signature="e#5740#5771#0" expanded="true" />
-            <element signature="e#5773#5805#0" expanded="true" />
-            <element signature="e#8092#10420#0" expanded="true" />
-            <element signature="e#8414#8422#0" expanded="true" />
-            <element signature="e#8998#9226#0" expanded="true" />
-            <element signature="e#9225#9226#0" expanded="true" />
-            <element signature="e#9285#10356#0" expanded="true" />
-            <element signature="e#10355#10356#0" expanded="true" />
-            <element signature="e#10419#10420#0" expanded="true" />
-            <element signature="e#10459#10715#0" expanded="true" />
-            <element signature="e#10714#10715#0" expanded="true" />
-            <element signature="e#10758#10993#0" expanded="true" />
-            <element signature="e#10992#10993#0" expanded="true" />
-            <element signature="e#11038#11273#0" expanded="true" />
-            <element signature="e#11272#11273#0" expanded="true" />
-            <element signature="e#11318#11553#0" expanded="true" />
-            <element signature="e#11552#11553#0" expanded="true" />
-            <element signature="e#11596#11831#0" expanded="true" />
-            <element signature="e#11830#11831#0" expanded="true" />
-            <element signature="e#11870#12105#0" expanded="true" />
-            <element signature="e#12104#12105#0" expanded="true" />
-            <element signature="e#12147#12382#0" expanded="true" />
-            <element signature="e#12381#12382#0" expanded="true" />
-            <element signature="e#12424#12659#0" expanded="true" />
-            <element signature="e#12658#12659#0" expanded="true" />
-            <marker date="1519107738841" expanded="false" signature="12918:12934" ph="}" />
-            <marker date="1519107738841" expanded="false" signature="14300:14456" ph="(oldQuery, newQuery) → {" />
-            <marker date="1519107738841" expanded="false" signature="15104:15121" ph="}" />
-            <marker date="1519107738841" expanded="false" signature="15180:15403" ph="(suggestionView, leftIcon, textView, item, itemPosition) → {" />
-            <marker date="1519107738841" expanded="false" signature="16330:16345" ph="}" />
-            <marker date="1519107738841" expanded="false" signature="20864:21002" ph="(item) → {" />
-            <marker date="1519107738841" expanded="false" signature="21571:21586" ph="}" />
-            <marker date="1519107738841" expanded="false" signature="21650:21803" ph="(newHeight) → {" />
-            <marker date="1519107738841" expanded="false" signature="21847:21862" ph="}" />
-            <marker date="1519107738841" expanded="false" signature="22448:22545" ph="(response) → {" />
-            <marker date="1519107738841" expanded="false" signature="23610:23625" ph="}" />
-            <marker date="1519107738841" expanded="false" signature="24952:25049" ph="(response) → {" />
-            <marker date="1519107738841" expanded="false" signature="25431:25446" ph="}" />
+            <element signature="e#5737#5768#0" expanded="true" />
+            <element signature="e#5770#5802#0" expanded="true" />
+            <element signature="e#8089#10417#0" expanded="true" />
+            <element signature="e#8411#8419#0" expanded="true" />
+            <element signature="e#8995#9223#0" expanded="true" />
+            <element signature="e#9222#9223#0" expanded="true" />
+            <element signature="e#9282#10353#0" expanded="true" />
+            <element signature="e#10352#10353#0" expanded="true" />
+            <element signature="e#10416#10417#0" expanded="true" />
+            <element signature="e#10456#10712#0" expanded="true" />
+            <element signature="e#10711#10712#0" expanded="true" />
+            <element signature="e#10755#10990#0" expanded="true" />
+            <element signature="e#10989#10990#0" expanded="true" />
+            <element signature="e#11035#11270#0" expanded="true" />
+            <element signature="e#11269#11270#0" expanded="true" />
+            <element signature="e#11315#11550#0" expanded="true" />
+            <element signature="e#11549#11550#0" expanded="true" />
+            <element signature="e#11593#11828#0" expanded="true" />
+            <element signature="e#11827#11828#0" expanded="true" />
+            <element signature="e#11867#12102#0" expanded="true" />
+            <element signature="e#12101#12102#0" expanded="true" />
+            <element signature="e#12144#12379#0" expanded="true" />
+            <element signature="e#12378#12379#0" expanded="true" />
+            <element signature="e#12421#12656#0" expanded="true" />
+            <element signature="e#12655#12656#0" expanded="true" />
+            <marker date="1519108018317" expanded="false" signature="12915:12931" ph="}" />
+            <marker date="1519108018317" expanded="false" signature="14297:14453" ph="(oldQuery, newQuery) → {" />
+            <marker date="1519108018317" expanded="false" signature="15101:15118" ph="}" />
+            <marker date="1519108018317" expanded="false" signature="15177:15400" ph="(suggestionView, leftIcon, textView, item, itemPosition) → {" />
+            <marker date="1519108018317" expanded="false" signature="16327:16342" ph="}" />
+            <marker date="1519108018317" expanded="false" signature="20861:20999" ph="(item) → {" />
+            <marker date="1519108018317" expanded="false" signature="21568:21583" ph="}" />
+            <marker date="1519108018317" expanded="false" signature="21647:21800" ph="(newHeight) → {" />
+            <marker date="1519108018317" expanded="false" signature="21844:21859" ph="}" />
+            <marker date="1519108018317" expanded="false" signature="22445:22542" ph="(response) → {" />
+            <marker date="1519108018317" expanded="false" signature="23607:23622" ph="}" />
+            <marker date="1519108018317" expanded="false" signature="24949:25046" ph="(response) → {" />
+            <marker date="1519108018317" expanded="false" signature="25428:25443" ph="}" />
           </folding>
         </state>
       </provider>

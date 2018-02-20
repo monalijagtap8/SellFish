@@ -715,7 +715,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
 
             sendNotification(remoteMessage.getNotification().getTitle());
-
         }
 
         private void sendNotification(String messageBody) {
@@ -735,7 +734,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
             notificationManager.notify(1, notificationBuilder.build());
-            // txtNotification.setText(1, notificationBuilder.build()));
+            //txtNotification.setText();
         }
     }
 
