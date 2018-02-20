@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -53,6 +54,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public static List<ItemSuggestions> items;
     @InjectView(R.id.img_viewCart)
     ImageView viewCart;
+    @InjectView(R.id.txt_fish)
+    Button btn_fish;
+    @InjectView(R.id.txt_poultry)
+    Button btn_poultry;
+    @InjectView(R.id.txt_mutton)
+    Button btn_mutton;
+    @InjectView(R.id.txt_deals)
+    Button btn_deals;
     @InjectView(R.id.floating_search_view)
     FloatingSearchView floatingSearchView;
     @InjectView(R.id.cartCount)
@@ -267,6 +276,39 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         });
         layout_deals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                finish();
+            }
+
+        });
+        btn_fish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                finish();
+            }
+
+        });
+
+        btn_mutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                finish();
+            }
+
+        });
+        btn_poultry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                finish();
+            }
+
+        });
+        btn_deals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
