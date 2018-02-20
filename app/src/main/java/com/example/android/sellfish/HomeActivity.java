@@ -1,15 +1,22 @@
 package com.example.android.sellfish;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -37,6 +44,8 @@ import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.arlib.floatingsearchview.util.Util;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -82,6 +91,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     SliderLayout sliderShow;
     @InjectView(R.id.imageview_advt)
     ImageView imageView_advt;
+    @InjectView(R.id.txtNotification)
+    TextView txtNotification;
     AdapterCategories adapter;
     List<DataCategories> data;
     Animation animation;
@@ -99,6 +110,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     int imageCount = 2131165302;
     List<String> search_list;
     String loc;
+    MyFirebaseMessagingService messagingService;
     private String mLastQuery = "Search...", TAG;
 
     @Override
@@ -111,6 +123,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         editor = sp.edit();
+        startService(new Intent(getApplicationContext(), MyFirebaseMessagingService.class));
         user_id = sp.getString("USER_ID", "");
         loc=sp.getString("LOC","");
         if(loc.isEmpty())
@@ -667,11 +680,64 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(HomeActivity.this, HomeActivity.class);
             finish();
             startActivity(intent);
+        } else if (id == R.id.nav_fish) {
+            intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
+            finish();
+            startActivity(intent);
+        } else if (id == R.id.nav_poultry) {
+            intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
+            finish();
+            startActivity(intent);
+        } else if (id == R.id.nav_mutton) {
+            intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
+            finish();
+            startActivity(intent);
+        }
+        if (id == R.id.nav_deals) {
+            intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
+            finish();
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public class MyFirebaseMessagingService extends FirebaseMessagingService {
+        @SuppressLint("WrongThread")
+        @Override
+        public void onMessageReceived(RemoteMessage remoteMessage) {
+
+            Log.d("fcm", "received notification");
+            if (remoteMessage.getNotification() != null) {
+                Log.d("Message", "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            }
+
+            sendNotification(remoteMessage.getNotification().getTitle());
+
+        }
+
+        private void sendNotification(String messageBody) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
+                    PendingIntent.FLAG_ONE_SHOT);
+
+            Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setContentTitle(messageBody)
+                    .setAutoCancel(false)
+                    .setSound(defaultSoundUri);
+
+            NotificationManager notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+            notificationManager.notify(1, notificationBuilder.build());
+            // txtNotification.setText(1, notificationBuilder.build()));
+        }
+    }
+
 
 }
