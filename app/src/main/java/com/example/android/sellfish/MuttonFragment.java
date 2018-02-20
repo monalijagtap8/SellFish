@@ -39,8 +39,8 @@ public class MuttonFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_mutton, container, false);
         volleyRequest = VolleyRequest.getObject();
         volleyRequest.setContext(getContext());
-        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=fish");
-        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=fish");
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=mutton");
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=mutton");
         volleyRequest.getResponse(new ServerCallback() {
             @Override
             public void onSuccess(String response) {

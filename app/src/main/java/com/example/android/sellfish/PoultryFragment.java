@@ -2,6 +2,7 @@ package com.example.android.sellfish;
 
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +18,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 import static android.view.View.VISIBLE;
 
@@ -32,6 +37,8 @@ public class PoultryFragment extends Fragment {
     JSONArray jArray;
     JSONObject json_data;
     View view;
+    @InjectView(R.id.txt_dataNotAvailable)
+    TextView dataNotAvailable;
 
     public PoultryFragment() {
         // Required empty public constructor
@@ -42,10 +49,11 @@ public class PoultryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_poultry, container, false);
+        ButterKnife.inject(view);
         volleyRequest = VolleyRequest.getObject();
         volleyRequest.setContext(getContext());
-        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=fish");
-        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=fish");
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=poultry");
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=poultry");
         volleyRequest.getResponse(new ServerCallback() {
             @Override
             public void onSuccess(String response) {
@@ -80,9 +88,13 @@ public class PoultryFragment extends Fragment {
                     } catch (JSONException e) {
 
                         e.printStackTrace();
+                        dataNotAvailable.setText("fkdmkvmkvk");
 
                     }
 
+                } else {
+                    dataNotAvailable.setText("fkdmkvmkvk");
+                    Snackbar.make(view.findViewById(R.id.txt_dataNotAvailable), "no hostel posted yet ", Snackbar.LENGTH_LONG).setAction("Action", null);
                 }
             }
         });
