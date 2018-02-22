@@ -1,5 +1,8 @@
 package com.example.android.sellfish;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -11,8 +14,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.NavigationView;
@@ -104,6 +109,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     int item_id;
     SharedPreferences sp;
     long back_pressed = 0;
+    DrawerLayout drawer;
     Toast toast;
     SharedPreferences.Editor editor;
     Intent intent;
@@ -111,6 +117,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     List<String> search_list;
     String loc;
     MyFirebaseMessagingService messagingService;
+    private View mDifloatingSearchViewBackground;
+    private ColorDrawable mDimDrawable;
     private String mLastQuery = "Search...", TAG;
 
     @Override
@@ -158,7 +166,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         getItemCount();
 
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -331,61 +339,32 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
 
         items = new ArrayList<>();
-        TAG = "*****kay rao**";
         fetchName();
 
-    }
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_main, menu);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(HomeActivity.this,"ssssss",Toast.LENGTH_LONG).show();
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                Toast.makeText(HomeActivity.this,"hhhhhhhhhhh",Toast.LENGTH_LONG).show();
-                fetchName();
-                if(jArray.length()>0)
-                    listView.setVisibility(View.VISIBLE);
-                return false;
-            }
-
-        });
-
-
-        return true;
-    }
-*/
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        floatingSearchView.setDismissOnOutsideClick(true);
-        floatingSearchView.setDismissOnOutsideClick(true);
+        mDifloatingSearchViewBackground = findViewById(R.id.dim_background);
+        mDimDrawable = new ColorDrawable(Color.BLACK);
+        mDimDrawable.setAlpha(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mDifloatingSearchViewBackground.setBackground(mDimDrawable);
+        } else {
+            mDifloatingSearchViewBackground.setBackgroundDrawable(mDimDrawable);
+        }
         floatingSearchView.swapSuggestions(items);
         floatingSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, final String newQuery) {
                 floatingSearchView.showProgress();
-                List<ItemSuggestions> filteredcities = new ArrayList<>();
+                List<ItemSuggestions> filtereditems = new ArrayList<>();
 
                 for (ItemSuggestions i : items) {
                     Log.d("**********", String.valueOf(i.getBody().contains(newQuery)) + "******" + newQuery);
                     if (i.getBody().toLowerCase().contains(newQuery.toLowerCase())) {
-                        filteredcities.add(i);
+                        filtereditems.add(i);
                         Log.d("**********", i.getBody());
                     }
 
                 }
-                floatingSearchView.swapSuggestions(filteredcities);
+                floatingSearchView.swapSuggestions(filtereditems);
 
                 floatingSearchView.hideProgress();
             }
@@ -396,15 +375,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         floatingSearchView.setOnBindSuggestionCallback(new SearchSuggestionsAdapter.OnBindSuggestionCallback() {
             @Override
             public void onBindSuggestion(View suggestionView, ImageView leftIcon, TextView textView, SearchSuggestion item, int itemPosition) {
-                ItemSuggestions citySuggetions = (ItemSuggestions) item;
+                ItemSuggestions ItemSuggestions = (ItemSuggestions) item;
 
-                if (citySuggetions.getBody().equalsIgnoreCase(mLastQuery))
-                    citySuggetions.setHistory(true);
+                if (ItemSuggestions.getBody().equalsIgnoreCase(mLastQuery))
+                    ItemSuggestions.setHistory(true);
                 Log.d("zandan", "am called" + itemPosition + "  " + item.getBody());
-                if (citySuggetions.isHistory()) {
+                if (ItemSuggestions.isHistory()) {
                     leftIcon.setImageDrawable(ResourcesCompat.getDrawable(getResources(),
                             R.drawable.ic_history_black_24dp, null));
-
                     Util.setIconColor(leftIcon, Color.GRAY);
                     leftIcon.setAlpha(1f);
                 } else {
@@ -419,7 +397,193 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         floatingSearchView.setOnSearchListener(new FloatingSearchView.OnSearchListener() {
             @Override
             public void onSuggestionClicked(SearchSuggestion searchSuggestion) {
-                ItemSuggestions citySuggetions1 = (ItemSuggestions) searchSuggestion;
+                ItemSuggestions ItemSuggestions1 = (ItemSuggestions) searchSuggestion;
+
+
+                mLastQuery = searchSuggestion.getBody();
+                Log.d("search", mLastQuery + "");
+                /////////////////Broooooooooooo here we can launch new activity///////////////////////////////
+
+                Intent i = new Intent(HomeActivity.this, HomeActivity.class);
+
+
+//Create the bundle
+                Bundle bundle = new Bundle();
+
+//Add your data to bundle
+                bundle.putString("city", mLastQuery.trim());
+
+//Add the bundle to the intent
+                i.putExtras(bundle);
+
+                ActivityOptions options = ActivityOptions.makeScaleUpAnimation(floatingSearchView.getRootView(), 0, 0, 280, 280);
+//Fire that second activity
+                if (!mLastQuery.contains("No result found")) {
+                    startActivity(i, options.toBundle());
+                    floatingSearchView.setSearchBarTitle(mLastQuery);
+                    floatingSearchView.clearSearchFocus();
+                }
+
+            }
+
+            @Override
+            public void onSearchAction(String currentQuery) {
+                List<ItemSuggestions> filtereditems = new ArrayList<>();
+                for (ItemSuggestions i : items) {
+                    if (i.getBody().contains(currentQuery)) {
+                        filtereditems.add(i);
+
+                    }
+
+                }
+
+                if (filtereditems.size() < 1)
+                    filtereditems.add(new ItemSuggestions("No result found"));
+                floatingSearchView.swapSuggestions(filtereditems);
+            }
+        });
+        floatingSearchView.setOnFocusChangeListener(new FloatingSearchView.OnFocusChangeListener() {
+            @Override
+            public void onFocus() {
+
+                ObjectAnimator anim = ObjectAnimator.ofFloat(floatingSearchView, "translationY",
+                        2, 0);
+                anim.setDuration(350);
+                //fadeDimBackground(0, 150, null);
+                anim.addListener(new AnimatorListenerAdapter() {
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        //show suggestions when search bar gains focus (typically history suggestions)
+                        fetchName();
+                    }
+                });
+                anim.start();
+
+
+            }
+
+            @Override
+            public void onFocusCleared() {
+
+                ObjectAnimator anim = ObjectAnimator.ofFloat(floatingSearchView, "translationY",
+                        0, 0);
+                anim.setDuration(350);
+                anim.start();
+                //fadeDimBackground(150, 0, null);
+
+                //set the title of the bar so that when focus is returned a new query begins
+                floatingSearchView.setSearchBarTitle(mLastQuery);
+            }
+        });
+        floatingSearchView.setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
+            @Override
+            public void onActionMenuItemSelected(MenuItem item) {
+                Log.d("************", item.getTitle().toString());
+                //// TODO: 21/8/17  can implement location menu item
+
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                        "Search for place or area");
+                startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
+
+
+            }
+        });
+        floatingSearchView.setOnSuggestionsListHeightChanged(new FloatingSearchView.OnSuggestionsListHeightChanged() {
+            @Override
+            public void onSuggestionsListHeightChanged(float newHeight) {
+
+                //to sync recycler
+            }
+        });
+
+    }
+
+
+    //////////////////////////////////
+    void onAttachSearchViewToDrawer(FloatingSearchView searchView) {
+        searchView.attachNavigationDrawerToMenuButton(drawer);
+    }
+
+    public boolean onActivityBackPress() {
+        //if mSearchView.setSearchFocused(false) causes the focused search
+        //to close, then we don't want to close the activity. if mSearchView.setSearchFocused(false)
+        //returns false, we know that the search was already closed so the call didn't change the focus
+        //state and it makes sense to call supper onBackPressed() and close the activity
+
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == RESULT_OK) {
+            ArrayList matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            floatingSearchView.setSearchBarTitle(matches.get(0).toString());
+
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        floatingSearchView.setSearchBarTitle(items.get(id).getBody());
+        floatingSearchView.clearSearchFocus();
+
+        //noinspection SimplifiableIfStatement
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+   /* private void fadeDimBackground(int from, int to, Animator.AnimatorListener listener) {
+        ValueAnimator anim = ValueAnimator.ofInt(from, to);
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+
+                int value = (Integer) animation.getAnimatedValue();
+                mDimDrawable.setAlpha(value);
+            }
+        });
+        if (listener != null) {
+            anim.addListener(listener);
+        }
+        anim.setDuration(200);
+        anim.start();
+    }*/
+
+
+  /*  @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }*/
+
+
+
+
+   /*
+        floatingSearchView.setOnSearchListener(new FloatingSearchView.OnSearchListener() {
+            @Override
+            public void onSuggestionClicked(SearchSuggestion searchSuggestion) {
+                ItemSuggestions ItemSuggestions1 = (ItemSuggestions) searchSuggestion;
 
 
                 Log.d("search", jArray.toString());
@@ -481,83 +645,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }
 
             }
-
-            @Override
-            public void onSearchAction(String currentQuery) {
-                List<ItemSuggestions> filteredcities = new ArrayList<>();
-                for (ItemSuggestions i : items) {
-                    if (i.getBody().contains(currentQuery)) {
-                        filteredcities.add(i);
-
-                    }
-
-                }
-                Log.d("harshu", currentQuery);
-                Log.d("filter", filteredcities + "");
-                if (filteredcities.size() < 1)
-                    filteredcities.add(new ItemSuggestions("No result found"));
-                floatingSearchView.swapSuggestions(filteredcities);
-            }
-        });
-//        searchView.setOnFocusChangeListener(new FloatingSearchView.OnFocusChangeListener() {
-//            @Override
-//            public void onFocus() {
-//
-//                ObjectAnimator anim = ObjectAnimator.ofFloat(searchView, "translationY",
-//                        300, 0);
-//                anim.setDuration(350);
-//
-//                anim.addListener(new AnimatorListenerAdapter() {
-//
-//                    @Override
-//                    public void onAnimationEnd(Animator animation) {
-//                        //show suggestions when search bar gains focus (typically history suggestions)
-//                        fetchName();
-//                    }
-//                });
-//                anim.start();
-//
-//
-//            }
-
-//            @Override
-//            public void onFocusCleared() {
-//
-//                //set the title of the bar so that when focus is returned a new query begins
-//                searchView.setSearchBarTitle(mLastQuery);
-//            }
-//        });
-        floatingSearchView.setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
-            @Override
-            public void onActionMenuItemSelected(MenuItem item) {
-                Log.d("************", item.getTitle().toString());
-                //// TODO: 21/8/17  can implement location menu item
-
-                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
-                        "Search for place or area");
-                startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
+*/
 
 
-            }
-        });
-        floatingSearchView.setOnSuggestionsListHeightChanged(new FloatingSearchView.OnSuggestionsListHeightChanged() {
-            @Override
-            public void onSuggestionsListHeightChanged(float newHeight) {
-                //to sync recycler
-            }
-        });
-        // searchView.setOnQueryTextListener(HomeActivity.this);
 
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
 
     void fetchName() {
 
@@ -575,6 +667,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                         jArray = new JSONArray(response);
 
+                        items = new ArrayList<>();
+
                         search_list = new ArrayList<String>(jArray.length());
                         for (int i = 0; i < jArray.length(); i++) {
                             Log.d("JarrayLength", jArray.length() + "");
@@ -583,8 +677,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             item_name = json_data.getString("type");
                             Log.d(item_name, "item");
                             search_list.add(item_name);
+                            items.add(new ItemSuggestions(item_name));
                         }
-
+                        floatingSearchView.swapSuggestions(items);
                         Log.d("addedList", search_list + "");
                     } catch (JSONException e) {
 
