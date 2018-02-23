@@ -31,7 +31,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -340,7 +339,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
 
         });
-
         items = new ArrayList<>();
         fetchName();
 //        floatingSearchView.bringToFront();
@@ -365,14 +363,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         filtereditems.add(i);
                         Log.d("**********", i.getBody());
                     }
-
                 }
                 floatingSearchView.swapSuggestions(filtereditems);
 
                 floatingSearchView.hideProgress();
             }
-
-
         });
 
         floatingSearchView.setOnBindSuggestionCallback(new SearchSuggestionsAdapter.OnBindSuggestionCallback() {
@@ -464,8 +459,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     }
                 });
                 anim.start();
-
-
             }
 
             @Override
@@ -493,8 +486,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
                         "Search for place or area");
                 startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
-
-
             }
         });
         floatingSearchView.setOnSuggestionsListHeightChanged(new FloatingSearchView.OnSuggestionsListHeightChanged() {
@@ -532,13 +523,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
+    /* @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+         // Inflate the menu; this adds items to the action bar if it is present.
+         getMenuInflater().inflate(R.menu.main, menu);
+         return true;
+     }
+ */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -650,9 +641,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             }
 */
-
-
-
 
 
     void fetchName() {

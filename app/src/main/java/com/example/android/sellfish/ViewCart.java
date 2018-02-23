@@ -154,6 +154,7 @@ public class ViewCart extends AppCompatActivity {
                             item_data.image = json_data.getString("image_path");
                             item_data.user_id = json_data.getString("userId");
                             item_data.item_id = json_data.getString("itemId");
+                            item_data.totalCartItems = jArray.length();
                             Log.d("UserId", item_data.user_id);
                             Log.d("ItemId", item_data.item_id);
                             data.add(item_data);

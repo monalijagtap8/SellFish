@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -47,8 +48,10 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     String user_id;
+    String[] price1;
     VolleyRequest volleyRequest;
     JSONObject orderData;
+    int totalPrice = 0, totalQuantity = 0;
     private Context context;
     private LayoutInflater inflater;
 
@@ -80,7 +83,6 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return holder;
     }
 
-
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         final MyHolder myHolder = (MyHolder) holder;
@@ -92,6 +94,18 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
         myHolder.txt_type.setText(item_data.type);
         myHolder.txt_quantity.setText(item_data.quantity + "");
         myHolder.txt_price.setText(item_data.price);
+        // price1=item_data.price.split(" ");
+        totalPrice = (Integer.parseInt(item_data.price) * (item_data.quantity)) + totalPrice;
+        totalQuantity = totalQuantity + (item_data.quantity);
+        Log.d("totalp", totalPrice + "");
+        if (position == (item_data.totalCartItems - 1)) {
+            myHolder.linearLayout.setVisibility(View.VISIBLE);
+            myHolder.txt_totalQuantity.setText(totalQuantity + "");
+            myHolder.txt_totalPrice.setText(totalPrice + "");
+            Log.d("Visible", "visible");
+            Log.d("totalpl", totalPrice + "");
+
+        }
 
         Glide.with(context).load("http://192.168.0.110:8001/routes/server/" + item_data.image).asBitmap().override(600, 600)
                 .placeholder(null).listener(new RequestListener<String, Bitmap>() {
@@ -197,12 +211,14 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
     class MyHolder extends RecyclerView.ViewHolder {
-        TextView txt_name, txt_type, txt_quantity, txt_price;
+        TextView txt_name, txt_type, txt_quantity, txt_price, txt_totalPrice, txt_totalQuantity;
         Button btn_add, btn_remove, btn_delete;
         ImageView imageView;
+        LinearLayout linearLayout;
 
         public MyHolder(View itemView) {
             super(itemView);
+            linearLayout = itemView.findViewById(R.id.layout_linear1);
             btn_add = itemView.findViewById(R.id.btn_add);
             btn_remove = itemView.findViewById(R.id.btn_remove);
             btn_delete = itemView.findViewById(R.id.btn_delete);
@@ -211,6 +227,8 @@ public class AdapterViewCart extends RecyclerView.Adapter<RecyclerView.ViewHolde
             txt_price = itemView.findViewById(R.id.txt_price);
             txt_quantity = itemView.findViewById(R.id.txt_quantity);
             imageView = itemView.findViewById(R.id.img_viewCart);
+            txt_totalPrice = itemView.findViewById(R.id.txt_totalPrice);
+            txt_totalQuantity = itemView.findViewById(R.id.txt_totalQuantity);
         }
     }
 }

@@ -6,5 +6,5 @@ package com.example.android.sellfish;
 
 public class DataViewCart {
     String name, image, desc, type, user_id, item_id, price;
-    int id, quantity;
+    int id, quantity, totalCartItems;
 }
