@@ -11,28 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9594c69-93b4-4ccd-8eb2-7f95bf4644e0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/heart_active.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/heart_inactive.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/AdapterFavourites.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FavouritesActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/favourite.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_favourites.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/container_favourites.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SellFish.iml" afterPath="$PROJECT_DIR$/SellFish.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/AdapterCart.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/AdapterCart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/Description.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/Description.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FishFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FishFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FreshWaterFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FreshWaterFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FrozenFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FrozenFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/HomeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/MarineFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/MarineFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/SubCategoryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/SubCategoryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_description.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_description.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_sub_category.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sub_category.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tab.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tab.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,8 +40,15 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/HomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="316">
-              <caret line="702" column="69" lean-forward="false" selection-start-line="702" selection-start-column="69" selection-end-line="702" selection-end-column="69" />
-              <folding />
+              <caret line="794" column="69" lean-forward="false" selection-start-line="794" selection-start-column="69" selection-end-line="794" selection-end-column="69" />
+              <folding>
+                <marker date="1519365313160" expanded="true" signature="26807:27216" ph="{...}" />
+                <marker date="1519365313160" expanded="false" signature="27193:27208" ph="}" />
+                <marker date="1519365313160" expanded="true" signature="27264:28119" ph="{...}" />
+                <marker date="1519365313160" expanded="true" signature="28151:29035" ph="{...}" />
+                <marker date="1519365313160" expanded="false" signature="28535:28632" ph="(response) → {" />
+                <marker date="1519365313160" expanded="false" signature="29012:29027" ph="}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FavouritesActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FavouritesActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FavouritesActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="848">
-              <caret line="121" column="21" lean-forward="false" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
+            <state relative-caret-position="254">
+              <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -93,8 +79,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+            <state relative-caret-position="440">
+              <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -104,17 +90,32 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FishFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="428">
-              <caret line="82" column="78" lean-forward="false" selection-start-line="82" selection-start-column="78" selection-end-line="82" selection-end-column="78" />
-              <folding />
+              <caret line="80" column="78" lean-forward="false" selection-start-line="80" selection-start-column="78" selection-end-line="80" selection-end-column="78" />
+              <folding>
+                <marker date="1519365313160" expanded="false" signature="2793:2890" ph="(response) → {" />
+                <marker date="1519365313160" expanded="false" signature="4685:4700" ph="}" />
+                <marker date="1519365313160" expanded="false" signature="4737:4748" ph=" { " />
+                <marker date="1519365313160" expanded="false" signature="4802:4808" ph=" }" />
+                <marker date="1519365313160" expanded="true" signature="4866:5645" ph="{...}" />
+                <marker date="1519365313160" expanded="false" signature="5072:5087" ph=" { " />
+                <marker date="1519365313160" expanded="false" signature="5102:5112" ph=" }" />
+                <marker date="1519365313160" expanded="false" signature="5177:5192" ph=" { " />
+                <marker date="1519365313160" expanded="false" signature="5227:5237" ph=" }" />
+                <marker date="1519365313160" expanded="false" signature="5286:5301" ph=" { " />
+                <marker date="1519365313160" expanded="false" signature="5329:5339" ph=" }" />
+                <marker date="1519365313160" expanded="true" signature="5406:5501" ph="{...}" />
+                <marker date="1519365313160" expanded="false" signature="5574:5589" ph=" { " />
+                <marker date="1519365313160" expanded="false" signature="5629:5639" ph=" }" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MarineFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MarineFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/MarineFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="474">
-              <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -123,14 +124,14 @@
       <file leaf-file-name="Description.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/Description.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2960">
-              <caret line="181" column="16" lean-forward="false" selection-start-line="181" selection-start-column="16" selection-end-line="181" selection-end-column="16" />
+            <state relative-caret-position="2920">
+              <caret line="178" column="16" lean-forward="false" selection-start-line="178" selection-start-column="16" selection-end-line="178" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="false" />
-                <element signature="e#4355#4356#0" expanded="false" />
-                <element signature="e#4402#4403#0" expanded="false" />
-                <element signature="e#4550#4551#0" expanded="false" />
-                <element signature="e#4596#4597#0" expanded="false" />
+                <element signature="e#4317#4318#0" expanded="false" />
+                <element signature="e#4364#4365#0" expanded="false" />
+                <element signature="e#4512#4513#0" expanded="false" />
+                <element signature="e#4558#4559#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -143,7 +144,7 @@
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1520">
-              <caret line="76" column="0" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="76" selection-end-column="0" />
+              <caret line="78" column="0" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -153,7 +154,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/AdapterFavourites.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="800">
-              <caret line="60" column="58" lean-forward="false" selection-start-line="60" selection-start-column="58" selection-end-line="60" selection-end-column="58" />
+              <caret line="59" column="58" lean-forward="false" selection-start-line="59" selection-start-column="58" selection-end-line="59" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -166,7 +167,7 @@
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="920">
-              <caret line="46" column="16" lean-forward="false" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+              <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -1987,7 +1988,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FishFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tab.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/SubCategoryActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/MarineFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sub_category.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/Description.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_description.xml" />
@@ -1998,6 +1998,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/AdapterFavourites.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FavouritesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_favourites.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/MarineFragment.java" />
       </list>
     </option>
   </component>
@@ -2225,7 +2226,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.android.sellfish.HomeActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365195880" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365457093" />
       </method>
     </configuration>
     <configuration default="false" name="TabActivity" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
@@ -2274,7 +2275,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.android.sellfish.TabActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365195880" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365457093" />
       </method>
     </configuration>
     <configuration default="false" name="SubCategoryActivity" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
@@ -2323,7 +2324,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.android.sellfish.SubCategoryActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365195880" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365457093" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -2396,7 +2397,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365195881" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365457093" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2444,7 +2445,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365195881" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365457094" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2606,7 +2607,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365195883" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519365457095" />
       </method>
     </configuration>
     <list size="4">
@@ -2735,7 +2736,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519107776384</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Favourites code added.">
+      <created>1519365274545</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1519365274545</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2827,7 +2835,8 @@
     <MESSAGE value="pushed" />
     <MESSAGE value="Subcategories activity added" />
     <MESSAGE value="Notification service added to homeactivity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Notification service added to homeactivity" />
+    <MESSAGE value="Favourites code added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Favourites code added." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -2900,6 +2909,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3046,8 +3056,8 @@
         <state relative-caret-position="430">
           <caret line="38" column="47" lean-forward="false" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
           <folding>
-            <element signature="e#1348#3263#0" expanded="false" />
-            <element signature="e#3262#3263#0" expanded="false" />
+            <element signature="e#1348#3255#0" expanded="false" />
+            <element signature="e#3254#3255#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3088,6 +3098,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3161,6 +3172,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3215,21 +3227,21 @@
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1520">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="76" selection-end-column="0" />
+          <caret line="78" column="0" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="78" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/Description.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2960">
-          <caret line="181" column="16" lean-forward="false" selection-start-line="181" selection-start-column="16" selection-end-line="181" selection-end-column="16" />
+        <state relative-caret-position="2920">
+          <caret line="178" column="16" lean-forward="false" selection-start-line="178" selection-start-column="16" selection-end-line="178" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#4355#4356#0" expanded="false" />
-            <element signature="e#4402#4403#0" expanded="false" />
-            <element signature="e#4550#4551#0" expanded="false" />
-            <element signature="e#4596#4597#0" expanded="false" />
+            <element signature="e#4317#4318#0" expanded="false" />
+            <element signature="e#4364#4365#0" expanded="false" />
+            <element signature="e#4512#4513#0" expanded="false" />
+            <element signature="e#4558#4559#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3237,7 +3249,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/AdapterFavourites.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
-          <caret line="60" column="58" lean-forward="false" selection-start-line="60" selection-start-column="58" selection-end-line="60" selection-end-column="58" />
+          <caret line="59" column="58" lean-forward="false" selection-start-line="59" selection-start-column="58" selection-end-line="59" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -3248,7 +3260,7 @@
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="920">
-          <caret line="46" column="16" lean-forward="false" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+          <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -3258,16 +3270,8 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FavouritesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="121" column="21" lean-forward="false" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
+        <state relative-caret-position="440">
+          <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -3275,8 +3279,15 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/HomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
-          <caret line="702" column="69" lean-forward="false" selection-start-line="702" selection-start-column="69" selection-end-line="702" selection-end-column="69" />
-          <folding />
+          <caret line="794" column="69" lean-forward="false" selection-start-line="794" selection-start-column="69" selection-end-line="794" selection-end-column="69" />
+          <folding>
+            <marker date="1519365313160" expanded="true" signature="26807:27216" ph="{...}" />
+            <marker date="1519365313160" expanded="false" signature="27193:27208" ph="}" />
+            <marker date="1519365313160" expanded="true" signature="27264:28119" ph="{...}" />
+            <marker date="1519365313160" expanded="true" signature="28151:29035" ph="{...}" />
+            <marker date="1519365313160" expanded="false" signature="28535:28632" ph="(response) → {" />
+            <marker date="1519365313160" expanded="false" signature="29012:29027" ph="}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3291,15 +3302,38 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FishFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
-          <caret line="82" column="78" lean-forward="false" selection-start-line="82" selection-start-column="78" selection-end-line="82" selection-end-column="78" />
-          <folding />
+          <caret line="80" column="78" lean-forward="false" selection-start-line="80" selection-start-column="78" selection-end-line="80" selection-end-column="78" />
+          <folding>
+            <marker date="1519365313160" expanded="false" signature="2793:2890" ph="(response) → {" />
+            <marker date="1519365313160" expanded="false" signature="4685:4700" ph="}" />
+            <marker date="1519365313160" expanded="false" signature="4737:4748" ph=" { " />
+            <marker date="1519365313160" expanded="false" signature="4802:4808" ph=" }" />
+            <marker date="1519365313160" expanded="true" signature="4866:5645" ph="{...}" />
+            <marker date="1519365313160" expanded="false" signature="5072:5087" ph=" { " />
+            <marker date="1519365313160" expanded="false" signature="5102:5112" ph=" }" />
+            <marker date="1519365313160" expanded="false" signature="5177:5192" ph=" { " />
+            <marker date="1519365313160" expanded="false" signature="5227:5237" ph=" }" />
+            <marker date="1519365313160" expanded="false" signature="5286:5301" ph=" { " />
+            <marker date="1519365313160" expanded="false" signature="5329:5339" ph=" }" />
+            <marker date="1519365313160" expanded="true" signature="5406:5501" ph="{...}" />
+            <marker date="1519365313160" expanded="false" signature="5574:5589" ph=" { " />
+            <marker date="1519365313160" expanded="false" signature="5629:5639" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/MarineFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
-          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/sellfish/FavouritesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
           <folding />
         </state>
       </provider>
