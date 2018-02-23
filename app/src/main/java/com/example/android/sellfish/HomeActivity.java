@@ -3,6 +3,7 @@ package com.example.android.sellfish;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -342,7 +343,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         items = new ArrayList<>();
         fetchName();
-
+//        floatingSearchView.bringToFront();
         mDifloatingSearchViewBackground = findViewById(R.id.dim_background);
         mDimDrawable = new ColorDrawable(Color.BLACK);
         mDimDrawable.setAlpha(0);
@@ -378,7 +379,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onBindSuggestion(View suggestionView, ImageView leftIcon, TextView textView, SearchSuggestion item, int itemPosition) {
                 ItemSuggestions ItemSuggestions = (ItemSuggestions) item;
-
+//                findViewById(R.id.sliderlayout1).setVisibility(View.INVISIBLE);
                 if (ItemSuggestions.getBody().equalsIgnoreCase(mLastQuery))
                     ItemSuggestions.setHistory(true);
                 Log.d("zandan", "am called" + itemPosition + "  " + item.getBody());
@@ -403,7 +404,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
                 mLastQuery = searchSuggestion.getBody();
-                Log.d("search", mLastQuery + "");
+                Log.d("searchHS", mLastQuery + "");
                 /////////////////Broooooooooooo here we can launch new activity///////////////////////////////
 
                 Intent i = new Intent(HomeActivity.this, HomeActivity.class);
@@ -442,16 +443,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 if (filtereditems.size() < 1)
                     filtereditems.add(new ItemSuggestions("No result found"));
                 floatingSearchView.swapSuggestions(filtereditems);
+
             }
         });
         floatingSearchView.setOnFocusChangeListener(new FloatingSearchView.OnFocusChangeListener() {
             @Override
             public void onFocus() {
 
-                ObjectAnimator anim = ObjectAnimator.ofFloat(floatingSearchView, "translationY",
-                        2, 0);
+//                int headerHeight = findViewById(R.id.).getHeight();
+                ObjectAnimator anim = ObjectAnimator.ofFloat(findViewById(R.id.jugaad), "translationY",
+                        -500, 500);
                 anim.setDuration(350);
-                //fadeDimBackground(0, 150, null);
+//                fadeDimBackground(0, 150, null);
                 anim.addListener(new AnimatorListenerAdapter() {
 
                     @Override
@@ -552,8 +555,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-   /* private void fadeDimBackground(int from, int to, Animator.AnimatorListener listener) {
+    private void fadeDimBackground(int from, int to, Animator.AnimatorListener listener) {
         ValueAnimator anim = ValueAnimator.ofInt(from, to);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -568,7 +570,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         anim.setDuration(200);
         anim.start();
-    }*/
+    }
 
 
   /*  @Override
