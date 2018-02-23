@@ -45,7 +45,9 @@ public class FishFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_fish, container, false);
+
         fetchData();
+        getCount1();
         marineFragment = new MarineFragment();
         shellFragment = new ShellFragment();
         freshWaterFragment = new FreshWaterFragment();
@@ -59,13 +61,11 @@ public class FishFragment extends Fragment {
       /*  tabLayout.setSelectedTabIndicatorHeight(5);*/
         tabLayout.setupWithViewPager(viewPager);
 
-
         return view;
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-
         adapter.addFragment(marineFragment, "Marine");
         adapter.addFragment(shellFragment, "Shell");
         adapter.addFragment(freshWaterFragment, "FreshWater");
@@ -109,16 +109,17 @@ public class FishFragment extends Fragment {
                         Log.d(data + "", "data*************");
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-
                     } catch (JSONException e) {
 
                         e.printStackTrace();
-
                     }
-
                 }
             }
         });
+    }
+
+    public void getCount1() {
+        ((SubCategoryActivity) getActivity()).getItemCount1();
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -143,12 +144,10 @@ public class FishFragment extends Fragment {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
-
-
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
     }
 }
-/*all,marine,shell,freshwater,frozen*/
+

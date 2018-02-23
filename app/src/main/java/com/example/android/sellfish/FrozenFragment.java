@@ -32,10 +32,6 @@ public class FrozenFragment extends Fragment {
     JSONArray jArray;
     JSONObject json_data;
     View view;
-    public FrozenFragment() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,9 +75,7 @@ public class FrozenFragment extends Fragment {
                     } catch (JSONException e) {
 
                         e.printStackTrace();
-
                     }
-
                 }
             }
         });

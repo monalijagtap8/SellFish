@@ -34,8 +34,6 @@ public class FreshWaterFragment extends Fragment {
     public FreshWaterFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,9 +77,7 @@ public class FreshWaterFragment extends Fragment {
                     } catch (JSONException e) {
 
                         e.printStackTrace();
-
                     }
-
                 }
             }
         });

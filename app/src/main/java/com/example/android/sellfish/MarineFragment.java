@@ -24,7 +24,6 @@ import static android.view.View.VISIBLE;
  * A simple {@link Fragment} subclass.
  */
 public class MarineFragment extends Fragment {
-
     AdapterCart adapter;
     List<DataCart> data;
     RecyclerView recyclerView;
@@ -33,15 +32,15 @@ public class MarineFragment extends Fragment {
     JSONObject json_data;
     View view;
 
-    public MarineFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_marine, container, false);
+        fetchData();
+        return view;
+    }
+
+    public void fetchData() {
         volleyRequest = VolleyRequest.getObject();
         volleyRequest.setContext(getContext());
         Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=fish");
@@ -80,13 +79,10 @@ public class MarineFragment extends Fragment {
                     } catch (JSONException e) {
 
                         e.printStackTrace();
-
                     }
-
                 }
             }
         });
-        return view;
     }
 
 }

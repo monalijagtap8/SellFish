@@ -17,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestListener;
@@ -47,6 +48,12 @@ public class Description extends AppCompatActivity {
     Button btnBuyNow;
     @InjectView(R.id.img_back)
     ImageView imgBack;
+    @InjectView(R.id.cartCount1)
+    TextView txtCount;
+    @InjectView(R.id.img_viewCart)
+    ImageView imgCart;
+    @InjectView(R.id.toggleFavourite)
+    ToggleButton toggleFavourite;
     VolleyRequest volleyRequest;
     TextView tv;
     EditText et;
@@ -59,6 +66,9 @@ public class Description extends AppCompatActivity {
         setContentView(R.layout.activity_description);
         ButterKnife.inject(this);
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
+        user_id = sp.getString("USER_ID", "");
+
+        getItemCount1();
 
         name = getIntent().getStringExtra("NAME");
         image = getIntent().getStringExtra("IMAGE");
@@ -73,6 +83,7 @@ public class Description extends AppCompatActivity {
         txt_price.setText(price);
         txt_available.setText(available);
         txt_description.setText(desc);
+        checkFavourie();
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("item_id", item_id);
@@ -108,9 +119,23 @@ public class Description extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        toggleFavourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFavourite();
+            }
+        });
+
+        imgCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(Description.this, ViewCart.class);
+                finish();
+                startActivity(intent);
+            }
+        });
 
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 if (sp.getBoolean("LOGGED_IN", false)) {
@@ -123,6 +148,7 @@ public class Description extends AppCompatActivity {
                         public void onSuccess(String response) {
 
                             Log.d("cbcjhe", response);
+                            getItemCount1();
                             Toast.makeText(Description.this, "Item added to cart", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -179,8 +205,77 @@ public class Description extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    public void getItemCount1() {
+        volleyRequest = VolleyRequest.getObject();
+        volleyRequest.setContext(getApplicationContext());
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=" + user_id);
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/totalCartItems.rfa.php?user_id=" + user_id);
+        volleyRequest.getResponse(new ServerCallback() {
+            @Override
+            public void onSuccess(String response) {
+                Log.d(response, "count");
+                int count = Integer.parseInt(response);
+                Log.d(response, "rcount");
+                txtCount.setText(response);
+                if (count > 9) {
+                    txtCount.setPadding(4, 0, 0, 0);
+                } else {
+                    txtCount.setPadding(14, 0, 0, 0);
+                }
+            }
+        });
+    }
 
+    public void setFavourite() {
+        if (sp.getBoolean("LOGGED_IN", false)) {
+            volleyRequest = VolleyRequest.getObject();
+            volleyRequest.setContext(Description.this);
+            Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/addToFavourites.rfa.php?user_id=" + user_id + "&item_id=" + item_id);
+            volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/addToFavourites.rfa.php?user_id=" + user_id + "&item_id=" + item_id);
+            volleyRequest.getResponse(new ServerCallback() {
+                @Override
+                public void onSuccess(String response) {
+
+                    Log.d("cbcjhe", response);
+                    if (response.contains("ADDED")) {
+                        toggleFavourite.setChecked(true);
+                        Toast.makeText(Description.this, "Item added to favourite", Toast.LENGTH_LONG).show();
+                    } else {
+                        toggleFavourite.setChecked(false);
+                        Toast.makeText(Description.this, "Item removed from favourite", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            });
+        } else {
+            intent = new Intent(getApplicationContext(), TabActivity.class);
+            finish();
+            startActivity(intent);
+        }
+    }
+
+    public void checkFavourie() {
+        volleyRequest = VolleyRequest.getObject();
+        volleyRequest.setContext(Description.this);
+        Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/favourites.rfa.php?user_id=" + user_id + "&item_id=" + item_id);
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/favourites.rfa.php?user_id=" + user_id + "&item_id=" + item_id);
+        volleyRequest.getResponse(new ServerCallback() {
+            @Override
+            public void onSuccess(String response) {
+
+                Log.d("checkF", response);
+                if (response.contains("EXISTS")) {
+                    toggleFavourite.setChecked(true);
+                } else {
+                    toggleFavourite.setChecked(false);
+                }
+
+            }
+        });
     }
 
 }
+
+

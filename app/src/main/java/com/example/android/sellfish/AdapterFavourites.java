@@ -23,13 +23,13 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by user on 24/1/18.
+ * Created by android on 2/22/18.
  */
 
-public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
+public class AdapterFavourites extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
     List<DataCart> data = Collections.emptyList();
-    MyHolder myHolder;
+    AdapterFavourites.MyHolder myHolder;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     String user_id;
@@ -39,7 +39,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     private LayoutInflater inflater;
 
 
-    public AdapterCart(Context context, List<DataCart> data) {
+    public AdapterFavourites(Context context, List<DataCart> data) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.data = data;
@@ -52,21 +52,22 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     @Override
     public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
         super.onViewAttachedToWindow(holder);
-        myHolder = (MyHolder) holder;
+        myHolder = (AdapterFavourites.MyHolder) holder;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.container_adapter, parent, false);
+        View view = inflater.inflate(R.layout.container_favourites, parent, false);
         MyHolder holder = new MyHolder(view);
 
         sp = context.getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         editor = sp.edit();
         return holder;
     }
+
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
-        final MyHolder myHolder = (MyHolder) holder;
+        final AdapterFavourites.MyHolder myHolder = (AdapterFavourites.MyHolder) holder;
         final int pos = position;
         final DataCart item_data = data.get(position);
         Log.d("position", position + "");
@@ -105,7 +106,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                         public void onSuccess(String response) {
                             Log.d("Responsecart", response);
                             //((HomeActivity) context).getItemCount();
-                            ((SubCategoryActivity) context).getItemCount1();
+                            ((FavouritesActivity) context).getItemCount1();
 
                             // refresh();
                         }
@@ -161,7 +162,5 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         }
     }
 }
-
-
 
 

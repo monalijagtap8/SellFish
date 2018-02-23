@@ -153,6 +153,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
+
         });
 */
         getItemCount();
@@ -311,6 +312,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
                 finish();
             }
+
 
         });
         btn_poultry.setOnClickListener(new View.OnClickListener() {
@@ -639,8 +641,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 } else {
                     cartCount.setPadding(14, 0, 0, 0);
                 }
-
-
             }
         });
     }
@@ -692,9 +692,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
             finish();
             startActivity(intent);
-        }
-        if (id == R.id.nav_deals) {
+        } else if (id == R.id.nav_deals) {
             intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
+            finish();
+            startActivity(intent);
+        } else if (id == R.id.nav_favourite) {
+            intent = new Intent(HomeActivity.this, FavouritesActivity.class);
             finish();
             startActivity(intent);
         }
@@ -713,10 +716,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             if (remoteMessage.getNotification() != null) {
                 Log.d("Message", "Message Notification Body: " + remoteMessage.getNotification().getBody());
             }
-
             sendNotification(remoteMessage.getNotification().getTitle());
         }
 
+        @SuppressLint("NewApi")
         private void sendNotification(String messageBody) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -734,9 +737,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
             notificationManager.notify(1, notificationBuilder.build());
-            //txtNotification.setText();
+          /*  Log.d("Notify",notificationManager.getActiveNotifications().toString());
+            txtNotification.setText( notificationManager.getActiveNotifications().toString());*/
         }
     }
-
-
 }
