@@ -8,10 +8,12 @@ import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -72,8 +74,8 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         Log.d("position", position + "");
 
         myHolder.txt_name.setText(item_data.name);
-        myHolder.btn_description.setText("Description");
-        myHolder.btn_addToCart.setText("add to cart");
+//        myHolder.description.setText("Description");
+//        myHolder.btn_addToCart.setText("add to cart");
         user_id = sp.getString("USER_ID", "");
         Glide.with(context).load("http://192.168.0.110:8001/routes/server/" + item_data.image).asBitmap().override(600, 600)
                 .placeholder(null).listener(new RequestListener<String, Bitmap>() {
@@ -92,7 +94,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             }
         }).error(null).into(myHolder.imageView);
 
-        myHolder.btn_addToCart.setOnClickListener(new View.OnClickListener() {
+        myHolder.addtocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (sp.getBoolean("LOGGED_IN", false)) {
@@ -117,9 +119,21 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                 }
             }
         });
-        myHolder.btn_description.setOnClickListener(new View.OnClickListener() {
+        myHolder.description.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+//                PopupMenu popup = new PopupMenu(context, myHolder.description); //you can use image button
+//                // as btnSettings on your GUI after
+//                //clicking this button pop up menu will be shown
+//
+//                popup.getMenuInflater().inflate(R.menu.details_bt_menu, popup.getMenu());
+//               // popup.setOnMenuItemClickListener(context);
+//                popup.show();
+
+
                 Intent intent = new Intent(context, Description.class);
                 intent.putExtra("NAME", item_data.name);
                 intent.putExtra("IMAGE", item_data.image);
@@ -134,6 +148,10 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         });
     }
 
+
+
+
+
     public void refresh() {
         Intent i = ((Activity) context).getIntent();
         ((Activity) context).finish();
@@ -145,21 +163,24 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         return data.size();
     }
 
+
     class MyHolder extends RecyclerView.ViewHolder {
         TextView txt_name;
-        Button btn_addToCart, btn_description;
-        ImageView imageView;
+        ImageView imageView,favourite,description,addtocart;
         RelativeLayout relativeLayout;
 
         public MyHolder(View itemView) {
             super(itemView);
             txt_name = itemView.findViewById(R.id.txt_name);
-            btn_addToCart = itemView.findViewById(R.id.btn_addToCart);
-            btn_description = itemView.findViewById(R.id.btn_description);
+            addtocart = itemView.findViewById(R.id.add_to_cart);
+            description = itemView.findViewById(R.id.description);
+           favourite = itemView.findViewById(R.id.add_to_favourite);
             imageView = itemView.findViewById(R.id.image_view);
             relativeLayout = itemView.findViewById(R.id.relativeAdapter);
         }
     }
+
+
 }
 
 

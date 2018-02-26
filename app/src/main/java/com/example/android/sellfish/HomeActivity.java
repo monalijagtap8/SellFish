@@ -476,4 +476,5 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             txtNotification.setText( notificationManager.getActiveNotifications().toString());*/
         }
     }
+
 }

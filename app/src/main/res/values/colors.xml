@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#1e5082</color>
+    <color name="colorPrimaryDark">#347cc4</color>
+    <color name="colorAccent">#1e5082</color>
     <color name="colorNavIcon">#dae9f6</color>
     <color name="colorNavText">#01294b</color>
     <color name="white">#fdfdfd</color>
@@ -148,4 +148,10 @@
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
     <color name="pinkey">#F41A66</color>
+
+    <color name="normal_text_color">#c8c5c2</color>
+    <color name="silver_bg_color">#eeeae4</color>
+
+
+
 </resources>

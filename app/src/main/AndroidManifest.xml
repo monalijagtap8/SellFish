@@ -76,11 +76,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FavouritesActivity"
-            android:label=""
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".Splash"></activity>
     </application>
 
 </manifest>

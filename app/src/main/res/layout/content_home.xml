@@ -56,9 +56,29 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
+                    android:clickable="true"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginBottom="2dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0.0px"
+                    app:cardPreventCornerOverlap="false">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="4">
 
                     <Button
@@ -67,6 +87,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:layout_marginRight="2dp"
+                        android:textColor="@color/colorAccent"
+                        android:background="@drawable/tab_bt_bg_shape"
                         android:text="Fish"
                         android:textSize="15dp" />
 
@@ -77,6 +100,9 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Mutton"
+                        android:layout_marginRight="2dp"
+                        android:textColor="@color/colorAccent"
+                        android:background="@drawable/tab_bt_bg_shape"
                         android:textSize="15dp" />
 
                     <Button
@@ -85,6 +111,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:layout_marginRight="2dp"
+                        android:textColor="@color/colorAccent"
+                        android:background="@drawable/tab_bt_bg_shape"
                         android:text="Poultry"
                         android:textSize="15dp" />
 
@@ -94,11 +123,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:textColor="@color/colorAccent"
+                        android:background="@drawable/tab_bt_bg_shape"
                         android:text="Deals"
                         android:textSize="15dp" />
 
                 </LinearLayout>
-
+                </android.support.v7.widget.CardView>
                 <android.support.v7.widget.CardView
                     android:id="@+id/sliderlayout1"
                     android:layout_width="match_parent"
@@ -128,7 +159,7 @@
                     android:background="#000000"
                     android:padding="3dp"
                     app:cardCornerRadius="2dp"
-                    app:cardElevation="8dp">
+                   >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -144,22 +175,30 @@
                                 android:id="@+id/layout_fish"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp"
                                 android:layout_weight="1">
 
-                                <ImageView
-                                    android:id="@+id/imageview_fish"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="150dp"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginRight="5dp"
-                                    android:src="@drawable/fish" />
 
-                                <TextView
+
+                                    <ImageView
+                                        android:id="@+id/imageview_fish"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="150dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_marginBottom="5dp"
+                                        android:src="@drawable/fish" />
+
+                                    <TextView
                                     android:id="@+id/textview_fish"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="bottom|center_horizontal"
-                                    android:text="Fish" />
+                                    android:textSize="17dp"
+                                    android:textColor="#122"
+                                        android:text="Fish" />
+
+
                             </FrameLayout>
 
                             <FrameLayout
@@ -250,7 +289,7 @@
                             <ImageView
                                 android:id="@+id/imageview_advt"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="75dp" />
 
                         </android.support.v7.widget.CardView>
                     </LinearLayout>
