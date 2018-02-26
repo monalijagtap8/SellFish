@@ -159,7 +159,6 @@ public class SearchActivity extends AppCompatActivity {
                 for (ItemSuggestions i : items) {
                     if (i.getBody().contains(currentQuery)) {
                         filtereditems.add(i);
-
                     }
 
                 }
