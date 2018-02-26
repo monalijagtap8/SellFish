@@ -37,6 +37,11 @@ public class MuttonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_mutton, container, false);
+        fetchData();
+        return view;
+    }
+
+    public void fetchData() {
         volleyRequest = VolleyRequest.getObject();
         volleyRequest.setContext(getContext());
         Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=mutton");
@@ -81,7 +86,6 @@ public class MuttonFragment extends Fragment {
                 }
             }
         });
-        return view;
     }
 
 }

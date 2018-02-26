@@ -8,12 +8,9 @@ import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -147,10 +144,6 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             }
         });
     }
-
-
-
-
 
     public void refresh() {
         Intent i = ((Activity) context).getIntent();

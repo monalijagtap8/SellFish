@@ -10,19 +10,19 @@
             android:title="Home" />
         <item
             android:id="@+id/nav_deals"
-            android:icon="@drawable/user_profile"
+            android:icon="@drawable/ic_handshake"
             android:title="Deals" />
         <item
             android:id="@+id/nav_fish"
-            android:icon="@drawable/user_profile"
+            android:icon="@drawable/ic_fish"
             android:title="Fish" />
         <item
             android:id="@+id/nav_poultry"
-            android:icon="@drawable/user_profile"
+            android:icon="@drawable/ic_chicken"
             android:title="Poultry" />
         <item
             android:id="@+id/nav_mutton"
-            android:icon="@drawable/user_profile"
+            android:icon="@drawable/ic_goat"
             android:title="Mutton" />
         <item
             android:id="@+id/nav_user_account"
@@ -30,28 +30,25 @@
             android:title="My Account" />
         <item
             android:id="@+id/nav_favourite"
-            android:icon="@drawable/user_profile"
+            android:icon="@drawable/ic_favorite"
             android:title="My Favourites" />
         <item
             android:id="@+id/nav_find_product"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_redo_black_24dp"
             android:title="Didn't find your product?" />
-        <item
-            android:id="@+id/nav_contact_us"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Contact Us" />
-        <item
-            android:id="@+id/nav_rewards"
-            android:icon="@drawable/user_profile"
-            android:title="Rewards" />
+
         <item
             android:id="@+id/nav_Faq"
-            android:icon="@drawable/user_profile"
+            android:icon="@drawable/ic_businessman_with_doubts"
             android:title="FAQ" />
         <item
             android:id="@+id/nav_Aboutus"
             android:icon="@drawable/user_profile"
             android:title="About Us" />
+        <item
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/ic_contact"
+            android:title="Contact Us" />
     </group>
 
     <!--  <item android:title="Communicate">

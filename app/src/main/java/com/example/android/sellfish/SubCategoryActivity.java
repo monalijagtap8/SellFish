@@ -44,6 +44,7 @@ public class SubCategoryActivity extends AppCompatActivity implements BottomNavi
         //getting bottom navigation view and attaching the listener
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
+
         imgCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

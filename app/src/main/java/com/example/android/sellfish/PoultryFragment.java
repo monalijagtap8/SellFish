@@ -50,6 +50,11 @@ public class PoultryFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_poultry, container, false);
         ButterKnife.inject(view);
+        fetchData();
+        return view;
+    }
+
+    public void fetchData() {
         volleyRequest = VolleyRequest.getObject();
         volleyRequest.setContext(getContext());
         Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=poultry");
@@ -98,7 +103,5 @@ public class PoultryFragment extends Fragment {
                 }
             }
         });
-        return view;
     }
-
 }

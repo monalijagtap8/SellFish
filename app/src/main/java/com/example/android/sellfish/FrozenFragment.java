@@ -37,6 +37,11 @@ public class FrozenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_frozen, container, false);
+        fetchData();
+        return view;
+    }
+
+    public void fetchData() {
         volleyRequest = VolleyRequest.getObject();
         volleyRequest.setContext(getContext());
         Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/fetchItems.rfa.php?type=fish");
@@ -79,7 +84,6 @@ public class FrozenFragment extends Fragment {
                 }
             }
         });
-        return view;
     }
 
 }

@@ -435,6 +435,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(HomeActivity.this, FavouritesActivity.class);
             finish();
             startActivity(intent);
+        } else if (id == R.id.nav_find_product) {
+            intent = new Intent(HomeActivity.this, FindUrProduct.class);
+            finish();
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
