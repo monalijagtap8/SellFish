@@ -276,6 +276,11 @@ public class Description extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(Description.this, HomeActivity.class));
+        finish();
+    }
 }
 
 
