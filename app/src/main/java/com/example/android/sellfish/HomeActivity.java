@@ -32,6 +32,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,13 +69,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @InjectView(R.id.cartCount)
     TextView cartCount;
     @InjectView(R.id.layout_fish)
-    FrameLayout layout_fish;
+    RelativeLayout layout_fish;
     @InjectView(R.id.layout_mutton)
-    FrameLayout layout_mutton;
+   RelativeLayout layout_mutton;
     @InjectView(R.id.layout_poultry)
-    FrameLayout layout_poultry;
+    RelativeLayout layout_poultry;
     @InjectView(R.id.layout_deals)
-    FrameLayout layout_deals;
+   RelativeLayout layout_deals;
     @InjectView(R.id.btn_location)
     TextView btn_location;
     @InjectView(R.id.search_list)
@@ -100,13 +101,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toast toast;
     SharedPreferences.Editor editor;
     Intent intent;
-    int imageCount = 2131165302;
+    int imageCount = 2131165282;
     List<String> search_list;
     String loc;
     MyFirebaseMessagingService messagingService;
     private View mDifloatingSearchViewBackground;
     private ColorDrawable mDimDrawable;
     private String mLastQuery = "Search...", TAG;
+
+    ImageView fishcat;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +119,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ButterKnife.inject(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+//
+//       fishcat = findViewById(R.id.imageview_fish);
+//        fishcat.getBackground().setAlpha(127);
 
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         editor = sp.edit();
@@ -129,13 +137,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         {
             btn_location.setText(loc);
         }
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 3; i++) {
             DefaultSliderView textSliderView = new DefaultSliderView(this);
             textSliderView.image(imageCount);
             imageCount++;
             sliderShow.addSlider(textSliderView);
             animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
-            Log.d(R.drawable.f1 + " " + R.drawable.f2 + " " + R.drawable.f3 + " " + R.drawable.f3, "f");
+            Log.d(R.drawable.ay1 + " " + R.drawable.ay2 + " " + R.drawable.ay3, "fvalue");
 
         }
         imageView_advt.setImageResource(R.drawable.advt1);

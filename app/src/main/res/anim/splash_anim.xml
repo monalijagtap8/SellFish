@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<set xmlns:android="http://schemas.android.com/apk/res/android" android:fillAfter="true">-->
+<!--&lt;!&ndash; Rotate &ndash;&gt;-->
+
+
+
+<!--<translate-->
+<!--<translate android:duration="3800"-->
+<!--android:fromYDelta="80%p"-->
+<!--android:interpolator="@android:anim/linear_interpolator"-->
+<!--android:toYDelta="0%p"-->
+<!--android:zAdjustment="top"-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--</translate>-->
+
+<!--</set>-->
+
+
+<!--<set-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+<!--<translate-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:fromXDelta="200%"-->
+<!--android:toXDelta="200%"-->
+<!--android:fromYDelta="150%"-->
+<!--android:toYDelta="150%"-->
+<!--android:duration="1500"-->
+<!--android:zAdjustment="top" />-->
+
+<!--</set>-->
+
+<!--<translate xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:duration="1000"-->
+<!--android:fromXDelta="0"-->
+<!--android:interpolator="@anim/my_ex2"-->
+<!--android:toXDelta="15" />-->
+
+
+<!--<set xmlns:android="http://schemas.android.com/apk/res/android" android:fillAfter="true">-->
+<!--&lt;!&ndash; Rotate &ndash;&gt;-->
+
+<rotate android:duration="2000"
+    android:fromDegrees="0"
+    android:interpolator="@android:anim/linear_interpolator"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:toDegrees="360"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+    <!--  down move -->
+    <!--<translate android:duration="1500"-->
+    <!--android:fromYDelta="0%p"-->
+    <!--android:interpolator="@android:anim/linear_interpolator"-->
+    <!--android:toYDelta="80%p"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android" />-->
+    <!--</set>-->

@@ -10,7 +10,7 @@
             android:title="Home" />
         <item
             android:id="@+id/nav_deals"
-            android:icon="@drawable/ic_handshake"
+            android:icon="@drawable/label"
             android:title="Deals" />
         <item
             android:id="@+id/nav_fish"
@@ -18,15 +18,15 @@
             android:title="Fish" />
         <item
             android:id="@+id/nav_poultry"
-            android:icon="@drawable/ic_chicken"
+            android:icon="@drawable/hen"
             android:title="Poultry" />
         <item
             android:id="@+id/nav_mutton"
-            android:icon="@drawable/ic_goat"
+            android:icon="@drawable/hostts"
             android:title="Mutton" />
         <item
             android:id="@+id/nav_user_account"
-            android:icon="@drawable/user_profile"
+            android:icon="@drawable/enduser"
             android:title="My Account" />
         <item
             android:id="@+id/nav_favourite"
@@ -34,7 +34,7 @@
             android:title="My Favourites" />
         <item
             android:id="@+id/nav_find_product"
-            android:icon="@drawable/ic_redo_black_24dp"
+            android:icon="@drawable/conversation"
             android:title="Didn't find your product?" />
 
         <item
@@ -43,11 +43,11 @@
             android:title="FAQ" />
         <item
             android:id="@+id/nav_Aboutus"
-            android:icon="@drawable/user_profile"
+            android:icon="@drawable/info_sign"
             android:title="About Us" />
         <item
             android:id="@+id/nav_contact_us"
-            android:icon="@drawable/ic_contact"
+            android:icon="@drawable/customerservice"
             android:title="Contact Us" />
     </group>
 

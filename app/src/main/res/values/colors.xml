@@ -152,6 +152,6 @@
     <color name="normal_text_color">#c8c5c2</color>
     <color name="silver_bg_color">#eeeae4</color>
 
-
+    <color name="black1">#99000000</color>
 
 </resources>

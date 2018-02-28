@@ -63,7 +63,7 @@
                 android:layout_marginTop="5dp"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/thinkkk"
+                android:src="@drawable/newlogo"
                 app:layout_collapseMode="parallax" />
 
             <android.support.v7.widget.Toolbar

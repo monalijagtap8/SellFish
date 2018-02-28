@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/navigation_mutton"
-        android:icon="@drawable/goat"
+        android:icon="@drawable/hostts"
         android:title="Mutton" />
 
     <item
