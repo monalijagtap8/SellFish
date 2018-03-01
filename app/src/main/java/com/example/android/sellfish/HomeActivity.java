@@ -120,10 +120,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//
-//       fishcat = findViewById(R.id.imageview_fish);
-//        fishcat.getBackground().setAlpha(127);
-
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         editor = sp.edit();
         startService(new Intent(getApplicationContext(), MyFirebaseMessagingService.class));
@@ -269,9 +265,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         layout_fish.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
-                finish();
+            public void onClick(View view)
+            {
+                intent= new Intent(HomeActivity.this, SubCategoryActivity.class);
+                intent.putExtra("Activity","Fish");
+                startActivity(intent);
+                HomeActivity.this.finish();
             }
 
         });
@@ -279,7 +278,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         layout_mutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+                intent.putExtra("Activity","Mutton");
+                startActivity(intent);
                 finish();
             }
 
@@ -287,7 +288,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         layout_poultry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+                intent.putExtra("Activity","Poultry");
+                startActivity(intent);
                 finish();
             }
 
@@ -295,7 +298,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         layout_deals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+                intent.putExtra("Activity","Deals");
+                startActivity(intent);
                 finish();
             }
 
@@ -303,7 +308,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         btn_fish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+                intent.putExtra("Activity","Fish");
+                startActivity(intent);
                 finish();
             }
 
@@ -312,7 +319,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         btn_mutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+                intent.putExtra("Activity","Mutton");
+                startActivity(intent);
                 finish();
             }
 
@@ -321,7 +330,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         btn_poultry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+                intent.putExtra("Activity","Poultry");
+                startActivity(intent);
                 finish();
             }
 
@@ -329,7 +340,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         btn_deals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SubCategoryActivity.class));
+                intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+                intent.putExtra("Activity","Deals");
+                startActivity(intent);
                 finish();
             }
 
@@ -424,21 +437,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             finish();
             startActivity(intent);
         } else if (id == R.id.nav_fish) {
-            intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
-            finish();
+            intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+            intent.putExtra("Activity","Fish");
             startActivity(intent);
+            finish();
         } else if (id == R.id.nav_poultry) {
-            intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
-            finish();
+            intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+            intent.putExtra("Activity","Poultry");
             startActivity(intent);
+            finish();
         } else if (id == R.id.nav_mutton) {
-            intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
-            finish();
+            intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+            intent.putExtra("Activity","Mutton");
             startActivity(intent);
+            finish();
         } else if (id == R.id.nav_deals) {
-            intent = new Intent(HomeActivity.this, SubCategoryActivity.class);
-            finish();
+            intent=new Intent(HomeActivity.this, SubCategoryActivity.class);
+            intent.putExtra("Activity","Deals");
             startActivity(intent);
+            finish();
         } else if (id == R.id.nav_favourite) {
             intent = new Intent(HomeActivity.this, FavouritesActivity.class);
             finish();

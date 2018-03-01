@@ -1,6 +1,8 @@
 package com.example.android.sellfish;
 
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -41,13 +43,19 @@ public class FishFragment extends Fragment {
     VolleyRequest volleyRequest;
     JSONArray jArray;
     JSONObject json_data;
-
+    SharedPreferences sp;
+    String user_id;
+    DataCart data_item;
+    List<DataItem> data1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_fish, container, false);
-
+        sp = getActivity().getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
+        user_id = sp.getString("USER_ID", "");
         fetchData();
         getCount1();
+        checkFavourie(user_id);
+
         marineFragment = new MarineFragment();
         shellFragment = new ShellFragment();
         freshWaterFragment = new FreshWaterFragment();
@@ -91,12 +99,12 @@ public class FishFragment extends Fragment {
                         for (int i = 0; i < jArray.length(); i++) {
                             Log.d("JarrayLength", jArray.length() + "");
                             json_data = jArray.getJSONObject(i);
-                            DataCart data_item = new DataCart();
+                            data_item= new DataCart();
                             json_data = jArray.getJSONObject(i);
                             data_item.name = json_data.getString("itemName");
                             data_item.desc = json_data.getString("description");
                             data_item.price = json_data.getString("price");
-                            data_item.id = json_data.getInt("id");
+                            data_item.setId(json_data.getInt("id"));
                             data_item.image = json_data.getString("image_path");
                             data.add(data_item);
                         }
@@ -109,6 +117,7 @@ public class FishFragment extends Fragment {
                         Log.d(data + "", "data*************");
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
+
                     } catch (JSONException e) {
 
                         e.printStackTrace();
@@ -149,6 +158,38 @@ public class FishFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    public void checkFavourie( String user_id1) {
+        volleyRequest = VolleyRequest.getObject();
+        volleyRequest.setContext(getContext());
+
+        Log.d("checkData*: ", "http://192.168.0.110:8001/routes/server/app/favourites.rfa.php?user_id=" + user_id1 );
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/favourites.rfa.php?user_id=" + user_id1 );
+        volleyRequest.getResponse(new ServerCallback() {
+            @Override
+            public void onSuccess(String response)
+            {
+                Log.d("checkF", response);
+                try {
+                    data1 = new ArrayList<>();
+                    jArray = new JSONArray(response);
+                    for (int i = 0; i < jArray.length(); i++) {
+                        Log.d("checkF", response);
+                        JSONObject json_data = jArray.getJSONObject(i);
+                        DataItem data_item = new DataItem();
+                        json_data = jArray.getJSONObject(i);
+                        data_item.setId(json_data.getInt("id"));
+                        data1.add(data_item);
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 }
 

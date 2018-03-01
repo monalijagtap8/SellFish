@@ -1,13 +1,12 @@
 package com.example.android.sellfish;
 
 /**
- * Created by user on 24/1/18.
+ * Created by android on 2/28/18.
  */
 
-public class DataCart {
-    String name, image, desc, type, price;
-    private int id;
-
+public class DataItem
+{
+    int id;
 
     public int getId() {
         return id;

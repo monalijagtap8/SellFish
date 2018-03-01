@@ -4,9 +4,9 @@
     tools:context=".HomeActivity">
     <item
 
-        android:id="@+id/action_voice_rec"
+        android:id="@+id/action_description"
         android:orderInCategory="1"
-        android:title="@string/action_voice_rec"
+        android:title="Description"
         app:showAsAction="always" />
     android:icon="@drawable/ic_keyboard_voice_black_24dp"
     android:title="@string/action_voice_rec"

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -126,7 +127,8 @@ public class Description extends AppCompatActivity {
             }
         });
 
-        imgCart.setOnClickListener(new View.OnClickListener() {
+        imgCart.setOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(Description.this, ViewCart.class);
@@ -135,7 +137,8 @@ public class Description extends AppCompatActivity {
             }
         });
 
-        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+        btnAddToCart.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 if (sp.getBoolean("LOGGED_IN", false)) {
@@ -271,14 +274,26 @@ public class Description extends AppCompatActivity {
                 } else {
                     toggleFavourite.setChecked(false);
                 }
-
             }
         });
+    }
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.desc_container, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
     }
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Description.this, HomeActivity.class));
+        intent=new Intent(Description.this, SubCategoryActivity.class);
+        intent.putExtra("Activity","Fish");
+        startActivity(intent);
         finish();
     }
 }

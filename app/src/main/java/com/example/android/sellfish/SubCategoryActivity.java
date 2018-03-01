@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,6 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -29,21 +37,48 @@ public class SubCategoryActivity extends AppCompatActivity implements BottomNavi
     Intent intent;
     @InjectView(R.id.cartCount1)
     TextView txtCount;
+    String act_name;
+    MenuItem item;
+   AdapterCart adapterCart;
+    List<DataItem> data1;
+    JSONArray jsonArray;
+    BottomNavigationView  navigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_sub_category);
-
+        navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(this);
         ButterKnife.inject(this);
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         user_id = sp.getString("USER_ID", "");
         getItemCount1();
-        loadFragment(new FishFragment());
+        checkFavourie(user_id);
+        act_name=getIntent().getStringExtra("Activity");
+        if(act_name.equals("Fish"))
+        {
+            navigation.getMenu().getItem(0).setChecked(true);
+            loadFragment(new FishFragment());
+        }
+        else if(act_name.equals("Mutton"))
+        {
+            navigation.getMenu().getItem(2).setChecked(true);
+            loadFragment(new MuttonFragment());
+        }
+        else if(act_name.equals("Poultry"))
+        {
+            navigation.getMenu().getItem(1).setChecked(true);
+            loadFragment(new PoultryFragment());
+        }
+        else
+        {
+            navigation.getMenu().getItem(3).setChecked(true);
+            loadFragment(new DealsFragment());
+        }
 
         //getting bottom navigation view and attaching the listener
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(this);
+
 
         imgCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +100,8 @@ public class SubCategoryActivity extends AppCompatActivity implements BottomNavi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
 
-        switch (item.getItemId()) {
+        switch (item.getItemId())
+        {
             case R.id.navigation_fish:
 
                 fragment = new FishFragment();
@@ -116,6 +152,38 @@ public class SubCategoryActivity extends AppCompatActivity implements BottomNavi
                 } else {
                     txtCount.setPadding(14, 0, 0, 0);
                 }
+            }
+        });
+    }
+    public void checkFavourie( String user_id1) {
+        volleyRequest = VolleyRequest.getObject();
+        volleyRequest.setContext(getApplicationContext());
+
+        Log.d("checkData*: ", "http://192.168.0.110:8001/routes/server/app/favourites.rfa.php?user_id=" + user_id1 );
+        volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/favourites.rfa.php?user_id=" + user_id1 );
+        volleyRequest.getResponse(new ServerCallback() {
+            @Override
+            public void onSuccess(String response)
+            {
+                Log.d("checkF", response);
+                try {
+                    data1 = new ArrayList<>();
+                    JSONArray jArray = new JSONArray(response);
+                    for (int i = 0; i < jArray.length(); i++) {
+                        Log.d("checkF", response);
+                        JSONObject json_data = jArray.getJSONObject(i);
+                        DataItem data_item = new DataItem();
+                        json_data = jArray.getJSONObject(i);
+                        data_item.setId(json_data.getInt("id"));
+                        data1.add(data_item);
+                    }
+
+            adapterCart=new AdapterCart(data1);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
     }

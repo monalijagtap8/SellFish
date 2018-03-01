@@ -48,7 +48,6 @@ public class FavouritesActivity extends AppCompatActivity {
         ButterKnife.inject(this);
         sp = getSharedPreferences("YourSharedPreference", Activity.MODE_PRIVATE);
         user_id = sp.getString("USER_ID", "");
-
         getItemCount1();
         checkFavourie();
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +56,8 @@ public class FavouritesActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        imgCart.setOnClickListener(new View.OnClickListener() {
+        imgCart.setOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(FavouritesActivity.this, ViewCart.class);
@@ -107,7 +107,7 @@ public class FavouritesActivity extends AppCompatActivity {
                         data_item.name = json_data.getString("itemName");
                         data_item.desc = json_data.getString("description");
                         data_item.price = json_data.getString("price");
-                        data_item.id = json_data.getInt("id");
+                        data_item.setId(json_data.getInt("id"));
                         data_item.image = json_data.getString("image_path");
                         data.add(data_item);
                     }

@@ -91,7 +91,6 @@ public class VolleyRequest {
         } else {
 
             TastyToast.makeText(context, "No Internet Connection..!", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-
         }
         return result;
     }

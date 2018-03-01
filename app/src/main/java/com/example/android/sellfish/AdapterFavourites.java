@@ -99,8 +99,8 @@ public class AdapterFavourites extends RecyclerView.Adapter<RecyclerView.ViewHol
                 if (sp.getBoolean("LOGGED_IN", false)) {
                     volleyRequest = VolleyRequest.getObject();
                     volleyRequest.setContext(context);
-                    Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.id);
-                    volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.id);
+                    Log.d("checkData: ", "http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.getId());
+                    volleyRequest.setUrl("http://192.168.0.110:8001/routes/server/app/addToCart.rfa.php?user_id=" + user_id + "&item_id=" + item_data.getId());
                     volleyRequest.getResponse(new ServerCallback() {
                         @Override
                         public void onSuccess(String response) {
@@ -124,7 +124,7 @@ public class AdapterFavourites extends RecyclerView.Adapter<RecyclerView.ViewHol
                 Intent intent = new Intent(context, Description.class);
                 intent.putExtra("NAME", item_data.name);
                 intent.putExtra("IMAGE", item_data.image);
-                intent.putExtra("ITEM_ID", item_data.id + "");
+                intent.putExtra("ITEM_ID", item_data.getId() + "");
                 intent.putExtra("USER_ID", user_id + "");
                 Log.d(user_id, "intent");
                 intent.putExtra("PRICE", item_data.price + "");

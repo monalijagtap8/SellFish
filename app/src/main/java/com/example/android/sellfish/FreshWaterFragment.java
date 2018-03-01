@@ -60,7 +60,7 @@ public class FreshWaterFragment extends Fragment {
                             data_item.name = json_data.getString("itemName");
                             data_item.desc = json_data.getString("description");
                             data_item.price = json_data.getString("price");
-                            data_item.id = json_data.getInt("id");
+                            data_item.setId(json_data.getInt("id"));
                             data_item.image = json_data.getString("image_path");
                             data.add(data_item);
                         }
